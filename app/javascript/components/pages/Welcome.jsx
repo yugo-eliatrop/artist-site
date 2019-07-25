@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+
 class Welcome extends React.Component {
   render () {
     return (
@@ -10,4 +10,4 @@ class Welcome extends React.Component {
   }
 }
 
-export default Welcome
+export default Welcome;
