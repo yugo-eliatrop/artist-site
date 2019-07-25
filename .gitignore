@@ -32,3 +32,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# route.rb for javascript, run `rails generate routes`
+/app/javascript/libs/routes.js
