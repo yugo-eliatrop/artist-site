@@ -15,4 +15,3 @@ class FirstScreen extends Component {
 }
 
 export default CSSModules(FirstScreen, styles, { allowMultiple: true });
-// export default FirstScreen;

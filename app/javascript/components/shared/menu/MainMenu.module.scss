@@ -1,0 +1,40 @@
+@import "../variables";
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $menu-bgr;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    hr {
+      width: 100%;
+    }
+  }
+
+  .gold {
+    color: $gold;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      background: $gold;
+      color: gray;
+    }
+  }
+}
