@@ -16,7 +16,6 @@
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap/dist/js/bootstrap';
-import './application.js';
 
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true);

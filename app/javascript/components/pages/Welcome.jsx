@@ -1,19 +1,12 @@
 import React, { Component, Fragment } from "react";
 
+import FirstScreen from "../shared/FirstScreen";
+
 class Welcome extends Component {
   render () {
     return (
       <Fragment>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <p>H</p>
-            </div>
-            <div className="col-md-6">
-              <p>W</p>
-            </div>
-          </div>
-        </div>
+        <FirstScreen />
       </Fragment>
     );
   }
