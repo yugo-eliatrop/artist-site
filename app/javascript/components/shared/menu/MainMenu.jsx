@@ -1,51 +1,50 @@
-import React, { Component } from "react";
+import React from "react";
 import CSSModules from "react-css-modules";
-import { FaInstagram, FaVk } from "react-icons/fa";
+import { FaInstagram, FaVk, FaTimes } from "react-icons/fa";
 
+// import { showWindow, hideWindow } from "../../../libs/animation";
 import styles from "./MainMenu.module.scss";
 
-class MainMenu extends Component {
-  render () {
-    return (
-      <div styleName="wrapper">
-        <div className="container">
-          <div className="row">
-            <div className="col-12" styleName="row">
-              <div styleName="gold">LOGO</div>
-              <div>X</div>
+const MainMenu = props => {
+  return (
+    <div styleName="wrapper">
+      <div className="container">
+        <div className="row">
+          <div className="col-12" styleName="row">
+            <div styleName="gold">LOGO</div>
+            <div styleName="close-button"><FaTimes onClick={props.close} /></div>
+          </div>
+          <div className="col-12" styleName="row">
+            <div>
+              <ul>
+                <li>Main</li>
+                <li>Album</li>
+                <li>Point3</li>
+                <li>Point4</li>
+              </ul>
             </div>
-            <div className="col-12" styleName="row">
-              <div>
-                <ul>
-                  <li>Main</li>
-                  <li>Album</li>
-                  <li>Point3</li>
-                  <li>Point4</li>
-                </ul>
-              </div>
-              <div>
-                <p>Something</p>
-                <p>Something</p>
-                <p>Something</p>
-              </div>
+            <div>
+              <p>Something</p>
+              <p>Something</p>
+              <p>Something</p>
             </div>
-            <div className="col-12" styleName="row">
-              <hr/>
+          </div>
+          <div className="col-12" styleName="row">
+            <hr />
+          </div>
+          <div className="col-12" styleName="row">
+            <div>
+              <p>Address</p>
             </div>
-            <div className="col-12" styleName="row">
-              <div>
-                <p>Address</p>
-              </div>
-              <div>
-                <FaInstagram />
-                <FaVk />
-              </div>
+            <div>
+              <FaInstagram />
+              <FaVk />
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default CSSModules(MainMenu, styles, { allowMultiple: true });
