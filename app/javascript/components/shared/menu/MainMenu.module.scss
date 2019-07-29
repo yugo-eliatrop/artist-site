@@ -10,10 +10,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+
+  svg {
+    font-size: 20px;
+  }
 
   .row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
+
+    &:first-child {
+      margin-bottom: 70px;
+    }
 
     div {
 
@@ -22,8 +32,16 @@
       }
     }
 
+    .close-button {
+      cursor: pointer;
+    }
+
     hr {
       width: 100%;
+      color: $gold;
+      height: 1px;
+      background: $gold;
+      border: none;
     }
   }
 
