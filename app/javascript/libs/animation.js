@@ -3,7 +3,7 @@ export const showWindow = (elem, ms = 150, display = "block") => {
   elem.style.opacity = opacity;
   elem.style.display = display;
 
-  let show = setInterval(function () {
+  let show = setInterval(() => {
     opacity += 0.1;
     opacity >= 1 && clearInterval(show);
     elem.style.opacity = opacity;
@@ -13,7 +13,7 @@ export const showWindow = (elem, ms = 150, display = "block") => {
 export const hideWindow = (elem, ms = 150) => {
   let opacity = 1;
 
-  let hide = setInterval(function () {
+  let hide = setInterval(() => {
     opacity -= 0.1;
     if (opacity <= 0) {
       clearInterval(hide);
