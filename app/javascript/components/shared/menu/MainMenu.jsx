@@ -51,3 +51,4 @@ const MainMenu = props => {
 };
 
 export default CSSModules(MainMenu, styles, { allowMultiple: true });
+// export default MainMenu;

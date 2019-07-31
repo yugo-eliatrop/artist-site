@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import FirstScreen from "../shared/firstScreen/FirstScreen";
-import MainMenu from "../shared/menu/MainMenu";
+import FirstScreen from "../../shared/firstScreen/FirstScreen";
+import MainMenu from "../../shared/menu/MainMenu";
 
 const Welcome = props => {
   const [menuIsVisible, toggleMenu] = useState(false);

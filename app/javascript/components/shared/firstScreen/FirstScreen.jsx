@@ -14,3 +14,4 @@ const FirstScreen = props => {
 };
 
 export default CSSModules(FirstScreen, styles, { allowMultiple: true });
+// export default FirstScreen;
