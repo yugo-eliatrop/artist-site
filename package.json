@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "lint": "eslint ./app/javascript --ext .jsx,.js",
-    "test": "node ./node_modules/jest-cli/bin/jest.js __tests__"
+    "test": "node ./node_modules/jest-cli/bin/jest.js __tests__",
+    "test-coverage": "node ./node_modules/jest-cli/bin/jest.js --coverage __tests__"
   },
   "jest": {
     "moduleNameMapper": {
