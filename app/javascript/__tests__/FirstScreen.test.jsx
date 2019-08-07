@@ -1,9 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import "../../../../setupTests";
+import "../setupTests";
 
-import FirstScreen from "../FirstScreen";
+import FirstScreen from "../components/shared/firstScreen/FirstScreen";
 
 describe("FirstScreen component", () => {
   it("should render logo and menu button", () => {
