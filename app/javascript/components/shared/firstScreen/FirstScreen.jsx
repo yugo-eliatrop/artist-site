@@ -9,6 +9,9 @@ const FirstScreen = props => {
     <div styleName="wrapper">
       <span>LOGO</span>
       <FaBars onClick={props.openMenu} />
+      <div styleName="scroll-button">
+        <span>explore</span>
+      </div>
     </div>
   );
 };

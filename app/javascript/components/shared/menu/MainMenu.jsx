@@ -6,9 +6,10 @@ import usePopupAnimation from "../usePopupAnimation";
 import styles from "./MainMenu.module.scss";
 
 const MainMenu = props => {
+  const { albums = [{ name: "" }] } = props;
   const [wrapper, close] = usePopupAnimation(props.close);
   return (
-    <div styleName="wrapper" ref={wrapper} style={{opacity: 0}}>
+    <div styleName="wrapper" ref={wrapper} style={{ opacity: 0 }}>
       <div className="container">
         <div className="row">
           <div className="col-12" styleName="row">
@@ -25,15 +26,12 @@ const MainMenu = props => {
                 <li>About</li>
               </ul>
             </div>
-            <div>
-              <p>Something</p>
-              <p>Something</p>
-              <p>Something</p>
-              <p>Something</p>
+            <div styleName="albums">
+              {albums.map(album => <p key={album.name}>{album.name}</p>)}
             </div>
           </div>
           <div className="col-12" styleName="row">
-            <hr/>
+            <hr />
           </div>
           <div className="col-12" styleName="row">
             <div>

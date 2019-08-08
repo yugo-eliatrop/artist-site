@@ -8,5 +8,12 @@ exports[`FirstScreen component should render logo and menu button 1`] = `
     LOGO
   </span>
   <FaBars />
+  <div
+    className="scroll-button"
+  >
+    <span>
+      explore
+    </span>
+  </div>
 </div>
 `;
