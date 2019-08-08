@@ -9,6 +9,6 @@ describe("FirstScreen component", () => {
   it("should render logo and menu button", () => {
     const wrapper = shallow(<FirstScreen/>);
     expect(shallowToJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.children().length).toEqual(3);
+    expect(wrapper.children().length).toEqual(4);
   });
 });

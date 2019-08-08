@@ -4,10 +4,15 @@ exports[`FirstScreen component should render logo and menu button 1`] = `
 <div
   className="wrapper"
 >
-  <span>
+  <Slider />
+  <span
+    className="menu-item"
+  >
     LOGO
   </span>
-  <FaBars />
+  <FaBars
+    className="menu-item"
+  />
   <div
     className="scroll-button"
   >
