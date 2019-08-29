@@ -6,7 +6,7 @@ import "../setupTests";
 import MainMenu from "../components/shared/menu/MainMenu";
 
 describe("MainMenu component", () => {
-  it("should render logo and menu button", () => {
+  it("should render menu and album list", () => {
     const wrapper = shallow(<MainMenu albums={[{ name: "1" }, { name: "2" }, { name: "3" }]} />);
     expect(shallowToJson(wrapper)).toMatchSnapshot();
     expect(wrapper.find(".albums").children().length).toEqual(3);
