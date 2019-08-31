@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 import { FaBars } from "react-icons/fa";
 
@@ -16,6 +17,11 @@ const FirstScreen = props => {
       </div>
     </div>
   );
+};
+
+FirstScreen.propTypes = {
+  slides: PropTypes.objectOf(PropTypes.string),
+  openMenu: PropTypes.func.isRequired
 };
 
 export default CSSModules(FirstScreen, styles, { allowMultiple: true });
