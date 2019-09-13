@@ -1,2 +1,4 @@
 app/javascript/libs/routes.js
 app/javascript/packs/*
+app/javascript/setupTests.js
+__tests__

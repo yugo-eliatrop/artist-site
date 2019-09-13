@@ -1,24 +1,35 @@
-# README
+The photographer website with CMS.<br>
+Ruby on Rails application with ReactJS (server side rendering).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+##### Install dependencies
+  * Ruby `2.6.3`
+  * Postgres `10`
+  * Node `11.10.1`
+  * Yarn
 
-* Ruby version
+Clone the repo and install:
+```sh
+git clone git@github.com:PapaSergiusV/artist-site.git
+cd artist-site
+bundle install
+yarn install
+rake db:setup
+```
+## Start app
 
-* System dependencies
+Runs the app in the development mode. For each command use other console tab.
 
-* Configuration
+```sh
+rails s
+./bin/webpack-dev-server
+```
 
-* Database creation
+## Start tests
 
-* Database initialization
+Runs unit tests.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+bundle exec rspec
+```

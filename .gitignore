@@ -35,3 +35,6 @@ yarn-debug.log*
 
 # route.rb for javascript, run `rails generate routes`
 /app/javascript/libs/routes.js
+
+# Ignore test reports
+/coverage

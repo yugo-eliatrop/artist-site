@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstScreen component should render logo and menu button 1`] = `
+<div
+  className="wrapper"
+>
+  <Slider />
+  <span
+    className="menu-item"
+  >
+    LOGO
+  </span>
+  <FaBars
+    className="menu-item"
+  />
+  <div
+    className="scroll-button"
+  >
+    <span>
+      explore
+    </span>
+  </div>
+</div>
+`;

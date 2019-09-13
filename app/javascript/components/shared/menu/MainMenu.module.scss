@@ -1,0 +1,71 @@
+@import "../variables";
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $menu-bgr;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  svg {
+    font-size: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &:first-child {
+      margin-bottom: 70px;
+    }
+
+    div {
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    .albums {
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .close-button {
+      cursor: pointer;
+    }
+
+    hr {
+      width: 100%;
+      color: $gold;
+      height: 1px;
+      background: $gold;
+      border: none;
+    }
+  }
+
+  .gold {
+    color: $gold;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      background: $gold;
+      color: $menu-bgr;
+    }
+  }
+}

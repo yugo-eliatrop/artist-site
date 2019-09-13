@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome component should render FirstScreen component only 1`] = `
+<div>
+  <FirstScreen
+    openMenu={[Function]}
+  />
+</div>
+`;

@@ -2,24 +2,42 @@
   "name": "artist_site",
   "private": true,
   "scripts": {
-    "lint": "eslint ./app/javascript --ext .jsx,.js"
+    "lint": "eslint ./app/javascript --ext .jsx,.js",
+    "test": "node ./node_modules/jest-cli/bin/jest.js __tests__",
+    "test-coverage": "node ./node_modules/jest-cli/bin/jest.js --coverage __tests__"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-css-modules": "^4.7.11",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
     "react_ujs": "^2.5.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
+    "jest-css-modules": "^2.1.0",
+    "jest-environment-enzyme": "^7.0.2",
+    "jest-enzyme": "^7.0.2",
+    "react-test-renderer": "^16.8.6",
     "webpack-dev-server": "^3.7.2"
   }
 }
