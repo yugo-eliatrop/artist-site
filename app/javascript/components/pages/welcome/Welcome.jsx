@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import FirstScreen from "../../shared/firstScreen/FirstScreen";
 import MainMenu from "../../shared/menu/MainMenu";
+import AlbumOverview from "../../shared/album/AlbumOverview";
 
 const Welcome = props => {
   const [menuIsVisible, toggleMenu] = useState(false);
@@ -10,6 +11,7 @@ const Welcome = props => {
     <div>
       <FirstScreen openMenu={() => toggleMenu(true)} />
       {menuIsVisible && <MainMenu {...props} close={() => toggleMenu(false)} />}
+      <AlbumOverview album={props.album} />
     </div>
   );
 };
