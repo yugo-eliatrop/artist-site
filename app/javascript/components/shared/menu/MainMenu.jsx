@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 import { FaInstagram, FaVk, FaTimes } from "react-icons/fa";
 
@@ -46,6 +47,13 @@ const MainMenu = props => {
       </div>
     </div>
   );
+};
+
+MainMenu.propTypes = {
+  albums: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string
+  })),
+  close: PropTypes.func.isRequired
 };
 
 export default CSSModules(MainMenu, styles, { allowMultiple: true });
