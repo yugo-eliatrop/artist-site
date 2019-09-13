@@ -1,6 +1,9 @@
 class Text < ApplicationRecord
-  validates :title, :key, presence: true
-  validates :key, length: { minimum: 3, maximum: 10 },
-                  uniqueness: true
-  validates :title, length: { minimum: 3 }
+  validates :key,
+            length: { minimum: 3, maximum: 10 },
+            uniqueness: true,
+            presence: true
+  validates :title,
+            length: { minimum: 3, maximum: 80 },
+            presence: true
 end
