@@ -4,7 +4,7 @@ import CSSModules from "react-css-modules";
 
 import styles from "./AlbumOverview.module.scss";
 
-const AlbumOverview = props => {
+const AlbumOverview = () => {
   return (
     <div styleName="wrapper"></div>
   );
