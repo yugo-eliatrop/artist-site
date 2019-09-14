@@ -50,16 +50,13 @@
     .close-button {
       cursor: pointer;
     }
+  }
 
-    hr {
-      width: 100%;
-      color: $gold;
-      height: 1px;
-      background: $gold;
-      border: none;
-    }
+  .address {
+    display: flex;
+    justify-content: space-between;
 
-    .address-point {
+    &-point {
       display: flex;
       align-items: center;
 
@@ -77,6 +74,22 @@
     &:hover {
       background: $gold;
       color: $menu-bgr;
+    }
+  }
+
+  .gold, ul {
+    font-family: $font-biggest;
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .address {
+    align-items: center;
+    flex-direction: column;
+
+    &-point {
+      margin-bottom: 10px;
     }
   }
 }

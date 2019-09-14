@@ -1,1 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
+@import "../components/shared/variables";
+
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+hr {
+  width: 100%;
+  color: $gold;
+  height: 1px;
+  background: $gold;
+  border: none;
+}
