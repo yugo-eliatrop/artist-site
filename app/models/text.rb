@@ -6,4 +6,8 @@ class Text < ApplicationRecord
   validates :title,
             length: { minimum: 3, maximum: 80 },
             presence: true
+
+  def as_json(*)
+    super(only: %i[title content])
+  end
 end
