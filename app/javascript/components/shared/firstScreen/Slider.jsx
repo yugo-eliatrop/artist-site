@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 
 import { showWindow } from "../../../libs/animation";
@@ -43,6 +44,11 @@ const Slider = props => {
       <div styleName="slide" style={{backgroundImage: `url(${slides[id]})`}}></div>
     </div>
   );
+};
+
+Slider.propTypes = {
+  slides: PropTypes.objectOf(PropTypes.string),
+  lifeTime: PropTypes.number
 };
 
 export default CSSModules(Slider, styles);
