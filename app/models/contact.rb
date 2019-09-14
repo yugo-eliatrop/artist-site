@@ -16,7 +16,11 @@ class Contact < ApplicationRecord
     end
 
     def of_all(services)
-      [*services].map { |service| of(service) }
+      res = {}
+      [*services].each do |service|
+        res[service] = find_by(service: service)
+      end
+      res
     end
   end
 end

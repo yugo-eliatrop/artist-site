@@ -44,20 +44,29 @@ const MainMenu = props => {
             <hr />
           </div>
           <div className="col-12" styleName="row">
-            <div styleName="address-point">
-              <FaInstagram />
-              <a href={instagram.address}>
-                {instagram.login}
-              </a>
-            </div>
-            <div styleName="address-point">
-              <FaPhone />
-              <span>{phone.address}</span>
-            </div>
-            <div styleName="address-point">
-              <FaEnvelope />
-              <span>{email.address}</span>
-            </div>
+            {
+              instagram &&
+              <div styleName="address-point">
+                <FaInstagram />
+                <a href={instagram.address}>
+                  {instagram.login}
+                </a>
+              </div>
+            }
+            {
+              phone &&
+              <div styleName="address-point">
+                <FaPhone />
+                <span>{phone.address}</span>
+              </div>
+            }
+            {
+              email &&
+              <div styleName="address-point">
+                <FaEnvelope />
+                <span>{email.address}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
