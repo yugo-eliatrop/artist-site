@@ -44,20 +44,29 @@ const MainMenu = props => {
             <hr />
           </div>
           <div className="col-12" styleName="row">
-            <div styleName="address-point">
-              <FaInstagram />
-              <a href={instagram.link}>
-                {instagram.title}
-              </a>
-            </div>
-            <div styleName="address-point">
-              <FaPhone />
-              <span>{phone.link}</span>
-            </div>
-            <div styleName="address-point">
-              <FaEnvelope />
-              <span>{email.link}</span>
-            </div>
+            {
+              instagram &&
+              <div styleName="address-point">
+                <FaInstagram />
+                <a href={instagram.address}>
+                  {instagram.login}
+                </a>
+              </div>
+            }
+            {
+              phone &&
+              <div styleName="address-point">
+                <FaPhone />
+                <span>{phone.address}</span>
+              </div>
+            }
+            {
+              email &&
+              <div styleName="address-point">
+                <FaEnvelope />
+                <span>{email.address}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -66,8 +75,8 @@ const MainMenu = props => {
 };
 
 const Contact = PropTypes.shape({
-  link: PropTypes.string.isRequired,
-  title: PropTypes.string
+  address: PropTypes.string.isRequired,
+  login: PropTypes.string
 });
 
 MainMenu.propTypes = {
