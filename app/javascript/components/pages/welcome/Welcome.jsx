@@ -34,11 +34,7 @@ const Welcome = props => {
           </div>
         </div>
         <hr />
-        <div className="row">
-          <div className="col-12">
-            <AlbumOverview albums={props.albums} />
-          </div>
-        </div>
+        <AlbumOverview even albums={props.albums} />
       </div>
     </div>
   );

@@ -2,16 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 
+import AlbumPreview from "./AlbumPreview";
 import styles from "./AlbumOverview.module.scss";
 
-const AlbumOverview = () => {
+const AlbumOverview = ({ albums, even }) => {
+  if (even && albums.length % 2 !== 0)
+    albums = albums.slice(0, albums.length - 1);
+
   return (
-    <div styleName="wrapper"></div>
+    <div className="row" styleName="wrapper">
+      {
+        albums.map(album => <AlbumPreview key={album.id} album={album} />)
+      }
+    </div>
   );
 };
 
 AlbumOverview.propTypes = {
-  albums: PropTypes.arrayOf(PropTypes.object)
+  id: PropTypes.number,
+  albums: PropTypes.arrayOf(PropTypes.object),
+  even: PropTypes.bool
 };
 
 export default CSSModules(AlbumOverview, styles, { allowMultiple: true });
