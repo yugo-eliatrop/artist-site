@@ -76,6 +76,11 @@
       color: $menu-bgr;
     }
   }
+
+  .gold, ul {
+    font-family: $font-biggest;
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 575.98px) {
