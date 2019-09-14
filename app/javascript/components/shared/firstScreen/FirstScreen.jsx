@@ -9,7 +9,7 @@ import Slider from "./Slider";
 const FirstScreen = props => {
   return (
     <div styleName="wrapper">
-      <Slider slides={props.slides} />
+      <Slider slides={props.slides} lifeTime={props.lifeTime} />
       <span styleName="menu-item">LOGO</span>
       <FaBars styleName="menu-item" onClick={props.openMenu} />
       <div styleName="scroll-button">
@@ -20,6 +20,7 @@ const FirstScreen = props => {
 };
 
 FirstScreen.propTypes = {
+  lifeTime: PropTypes.number,
   slides: PropTypes.objectOf(PropTypes.string),
   openMenu: PropTypes.func.isRequired
 };
