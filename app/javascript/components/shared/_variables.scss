@@ -3,3 +3,9 @@ $scroll-btn-bgr: rgba(52, 52, 52, .4);
 $gold: #d2b583;
 $font-biggest: 'Playfair Display SC', serif;
 $font-smallest: 'Cormorant Garamond', serif;
+
+.paragraph {
+  font-family: $font-smallest;
+  font-size: 24px;
+  font-weight: 500;
+}

@@ -28,7 +28,7 @@ const Welcome = props => {
             <div styleName="intro">
               <h1>{title}</h1>
               <div styleName="p-wrapper">
-                <p>{content}</p>
+                <p styleName="paragraph">{content}</p>
               </div>
             </div>
           </div>

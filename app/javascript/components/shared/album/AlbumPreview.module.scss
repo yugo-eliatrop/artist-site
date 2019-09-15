@@ -1,0 +1,31 @@
+@import "../../shared/variables";
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+
+  a {
+    text-decoration: none;
+    color: #333;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  h3 {
+    padding-top: 10px;
+  }
+
+  h3, p {
+    text-align: center;
+  }
+
+  .prev-img {
+    background-size: contain;
+    cursor: pointer;
+    width: 100%;
+  }
+}
