@@ -5,6 +5,7 @@ import CSSModules from "react-css-modules";
 import FirstScreen from "../../shared/firstScreen/FirstScreen";
 import MainMenu from "../../shared/menu/MainMenu";
 import AlbumOverview from "../../shared/album/AlbumOverview";
+import Footer from "../../shared/footer/Footer";
 import styles from "./Welcome.module.scss";
 
 const Welcome = props => {
@@ -28,18 +29,15 @@ const Welcome = props => {
             <div styleName="intro">
               <h1>{title}</h1>
               <div styleName="p-wrapper">
-                <p>{content}</p>
+                <p styleName="paragraph">{content}</p>
               </div>
             </div>
           </div>
         </div>
         <hr />
-        <div className="row">
-          <div className="col-12">
-            <AlbumOverview albums={props.albums} />
-          </div>
-        </div>
+        <AlbumOverview even albums={props.albums} />
       </div>
+      <Footer contacts={props.contacts} />
     </div>
   );
 };
