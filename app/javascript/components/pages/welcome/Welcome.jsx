@@ -5,6 +5,7 @@ import CSSModules from "react-css-modules";
 import FirstScreen from "../../shared/firstScreen/FirstScreen";
 import MainMenu from "../../shared/menu/MainMenu";
 import AlbumOverview from "../../shared/album/AlbumOverview";
+import Footer from "../../shared/footer/Footer";
 import styles from "./Welcome.module.scss";
 
 const Welcome = props => {
@@ -36,6 +37,7 @@ const Welcome = props => {
         <hr />
         <AlbumOverview even albums={props.albums} />
       </div>
+      <Footer contacts={props.contacts} />
     </div>
   );
 };
