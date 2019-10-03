@@ -1,0 +1,43 @@
+@import "../../shared/variables";
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding: 30px 0;
+
+  .form-wrapper {
+    background: $footer-gray;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px $menu-bgr;
+    color: white;
+    min-width: 300px;
+    padding: 30px;
+
+    p {
+      margin: 12px 0 0 0;
+    }
+
+    .error {
+      color: red;
+      margin: 0;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+    }
+  }
+
+  h2 {
+    font-family: $font-biggest;
+    text-align: center;
+  }
+}

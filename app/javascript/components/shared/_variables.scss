@@ -4,9 +4,18 @@ $gold: #d2b583;
 $font-biggest: 'Playfair Display SC', serif;
 $font-smallest: 'Cormorant Garamond', serif;
 $footer-gray: #343434;
+$light-gray: #dddddd;
 
 .paragraph {
   font-family: $font-smallest;
   font-size: 24px;
   font-weight: 500;
+}
+
+.button-white {
+  background: $light-gray;
+  border-radius: 5px;
+  color: $footer-gray;
+  font-weight: 900;
+  padding: 3px 15px;
 }
