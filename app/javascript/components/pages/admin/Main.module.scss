@@ -1,0 +1,51 @@
+@import "../../shared/variables";
+
+.wrapper {
+  min-height: 100vh;
+
+  .header {
+    background: $sky;
+    color: white;
+  }
+
+  .texts {
+    
+    p {
+      margin-bottom: 0;
+    }
+
+    input, textarea {
+      width: 100%;
+    }
+  }
+
+  .contacts {
+
+    .contact-field {
+      border-bottom: 1px solid gray;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      input {
+        border-bottom: none;
+        border-top: none;
+      }
+    }
+  }
+
+  .point {
+    background: $light-blue;
+    margin: 20px 0;
+    border-bottom: 1px solid $sky;
+    border-top: 1px solid $sky;
+    padding: 20px 0;
+
+    &-title {
+      font-weight: bold;
+    }
+    
+    input {
+      padding: 0 2px;
+    }
+  }
+}
