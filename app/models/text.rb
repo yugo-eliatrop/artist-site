@@ -9,6 +9,6 @@ class Text < ApplicationRecord
             presence: true
 
   def as_json(*)
-    super(only: %i[title content])
+    super(only: %i[title content key id])
   end
 end
