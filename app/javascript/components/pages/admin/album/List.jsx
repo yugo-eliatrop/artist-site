@@ -19,6 +19,7 @@ const List = props => {
   const albums = convertAlbums();
   const [priorityIsBeingEdited, setPriorityChangingStatus] = useState(false);
   const [priority, setPriority] = useState(props.albums.map(album => album.id));
+  const [tempPriority, setTempPriority] = useState(null);
 
   const changePriority = () => {
     let data = new FormData();
@@ -26,6 +27,16 @@ const List = props => {
     priority.forEach(p => data.append("priority[]", p));
     fetch(Routes.change_priority_albums_path(), { method: "POST", body: data })
       .then(response => response.ok && setPriorityChangingStatus(false));
+  };
+
+  const startPriorityChanging = () => {
+    setTempPriority(priority);
+    setPriorityChangingStatus(true);
+  };
+
+  const cancelPriorityChanging = () => {
+    setPriority(tempPriority);
+    setPriorityChangingStatus(false);
   };
 
   const swap = (i, j) => {
@@ -54,16 +65,21 @@ const List = props => {
       <div className="col-12">
         <h3 styleName="point-title">Albums settings</h3>
       </div>
-      <div styleName="priority-btns">
-        {
-          priorityIsBeingEdited ?
-            <>
-              <button onClick={changePriority}>Save</button>
-              <button onClick={() => setPriorityChangingStatus(false)}>Cancel</button>
-            </>
-            :
-            <button onClick={() => setPriorityChangingStatus(true)}>Change priority</button>
-        }
+      <div styleName="btns">
+        <div styleName="priority-btns">
+          {
+            priorityIsBeingEdited ?
+              <>
+                <button onClick={changePriority}>Save</button>
+                <button onClick={cancelPriorityChanging}>Cancel</button>
+              </>
+              :
+              <button onClick={startPriorityChanging}>Change priority</button>
+          }
+        </div>
+        <a href={Routes.new_album_path()}>
+          <button>Create Album</button>
+        </a>
       </div>
       {
         priority.map((id, i) =>
@@ -83,6 +99,7 @@ const List = props => {
                 }
                 <strong>{albums[id].name}</strong>
               </div>
+              <a href={Routes.edit_album_path(id)}>Edit</a>
             </div>
           </div>
         )

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
   
-  resources :albums, on: :collection do
+  resources :albums do
     post :change_priority, on: :collection
   end
   
