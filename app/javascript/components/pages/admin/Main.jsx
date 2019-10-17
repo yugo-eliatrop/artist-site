@@ -31,7 +31,7 @@ const Main = props => {
         </div>
         <TextSettings texts={texts} handleSubmit={handleSubmit} />
         <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
-        <AlbumList albums={albums} />
+        <AlbumList albums={albums} csrf_token={csrf_token} />
       </div>
     </div>
   );

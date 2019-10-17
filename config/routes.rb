@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
   
-  resources :albums, on: :collection
+  resources :albums, on: :collection do
+    post :change_priority, on: :collection
+  end
   
   get '/admin' => 'admin#index'
   post '/admin_update' => 'admin#update'

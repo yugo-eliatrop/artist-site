@@ -38,13 +38,22 @@ const Footer = ({ contacts: { instagram, phone, email }, user }) => {
           <span>{email.address}</span>
         </div>
       }
-      <div styleName="address-point gray">
-        {
-          user ?
-            <p onClick={signOut}>Sign Out</p> :
+      {
+        user ?
+          <>
+            <div styleName="address-point gray">
+              <p onClick={signOut}>Sign Out</p>
+            </div>
+            <div styleName="address-point gray">
+              <a href={Routes.admin_path()}>Admin</a>
+            </div>
+          </> :
+          <div styleName="address-point gray">
             <a href={Routes.signin_path()}>Sign In</a>
-        }
-      </div>
+          </div>
+
+      }
+
     </div>
   );
 };
