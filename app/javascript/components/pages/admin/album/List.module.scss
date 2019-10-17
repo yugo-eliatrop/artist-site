@@ -5,17 +5,25 @@
   .album {
     display: flex;
     justify-content: space-between;
+    
+    .panel {
+      border-bottom: 1px solid gray;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      width: 100%;
+
+      .left-side {
+        display: flex;
+        align-items: center;
+      }
+    }
 
     .arrows {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-right: 10px;
     }
-  }
-
-  .left-side {
-    display: flex;
-    align-items: center;
   }
 
   .priority-btns {
