@@ -8,4 +8,8 @@ class User < ApplicationRecord
             format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_secure_password
+
+  def as_json(*)
+    super(only: %i[id email name])
+  end
 end

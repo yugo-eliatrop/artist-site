@@ -18,10 +18,10 @@ const LoginForm = props => {
     data.append("user[password]", event.target.password.value);
     if (userExists) {
       fetch(Routes.signin_path(), { method: "POST", body: data })
-        .then(response =>  {
+        .then(response => {
           if (response.ok)
             window.location.replace("/");
-          else 
+          else
             response.json().then(data => {
               response.status == 401 && addErrors(data.errors);
             });
@@ -30,10 +30,10 @@ const LoginForm = props => {
       data.append("user[name]", handleLine(event.target.name.value));
       data.append("user[password_confirmation]", event.target.password_confirmation.value);
       fetch(Routes.users_path(), { method: "POST", body: data })
-        .then(response =>  {
+        .then(response => {
           if (response.ok)
-            window.location.replace("signin");
-          else 
+            window.location.replace("/");
+          else
             response.json().then(data => {
               response.status == 422 && addErrors(data.errors);
             });
@@ -48,28 +48,28 @@ const LoginForm = props => {
         <form onSubmit={handleSubmit}>
           {
             userExists ||
-              <Fragment>
-                <p>Name</p>
-                {errors && errors.name && <p styleName="error">{errors.name[0]}</p>}
-                <input type="text" maxLength="50" name="name" required/>
-              </Fragment>
+            <Fragment>
+              <p>Name</p>
+              {errors && errors.name && <p styleName="error">{errors.name[0]}</p>}
+              <input type="text" maxLength="50" name="name" required />
+            </Fragment>
           }
           <p>Email</p>
           {errors && errors.email && <p styleName="error">{errors.email[0]}</p>}
-          <input type="text" maxLength="50" name="email" required/>
+          <input type="text" maxLength="50" name="email" required />
           <p>Password</p>
-          <input type="password" name="password" required/>
+          <input type="password" name="password" required />
           {
             userExists ||
-              <Fragment>
-                <p>Password confirmation</p>
-                {errors && errors.password_confirmation && <p styleName="error">{errors.password_confirmation[0]}</p>}
-                <input type="password" name="password_confirmation" required/>
-              </Fragment>
+            <Fragment>
+              <p>Password confirmation</p>
+              {errors && errors.password_confirmation && <p styleName="error">{errors.password_confirmation[0]}</p>}
+              <input type="password" name="password_confirmation" required />
+            </Fragment>
           }
           <div styleName="button-wrapper">
             <button styleName="button-white" type="submit">
-              { userExists ? "SignIn" : "SignUp" }
+              {userExists ? "SignIn" : "SignUp"}
             </button>
           </div>
         </form>

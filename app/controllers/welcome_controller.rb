@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
     render component: 'pages/welcome/Welcome', props: {
       albums: Album.limit(4).order(:priority),
       contacts: Contact.of_all(%w[instagram phone email]),
-      main_text: Text.find_by(key: 'Main about')
+      main_text: Text.find_by(key: 'Main about'),
+      user: current_user
     }
   end
 end
