@@ -1,0 +1,33 @@
+@import "../Main.module.scss";
+
+.albums {
+
+  .album {
+    display: flex;
+    justify-content: space-between;
+
+    .arrows {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-right: 10px;
+    }
+  }
+
+  .left-side {
+    display: flex;
+    align-items: center;
+  }
+
+  .priority-btns {
+    display: flex;
+    padding: 0 15px;
+    margin-bottom: 10px;
+
+    button {
+      
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}

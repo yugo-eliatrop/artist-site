@@ -4,11 +4,12 @@ import CSSModules from "react-css-modules";
 
 import TextSettings from "./text/Text";
 import ContactsSettings from "./contacts/Contacts";
+import AlbumList from "./album/List";
 import Routes from "../../../libs/routes";
 import styles from "./Main.module.scss";
 
 const Main = props => {
-  const { texts, contacts, csrf_token } = props;
+  const { texts, contacts, csrf_token, albums } = props;
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -30,6 +31,7 @@ const Main = props => {
         </div>
         <TextSettings texts={texts} handleSubmit={handleSubmit} />
         <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
+        <AlbumList albums={albums} />
       </div>
     </div>
   );
