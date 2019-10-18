@@ -1,11 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new change_priority]
-
-  def new
-    render component: 'pages/admin/album/Form', props: {
-      csrf_token: form_authenticity_token
-    }
-  end
+  before_action :authenticate_user!, only: %i[edit change_priority]
 
   def edit
     render component: 'pages/admin/album/Form', props: {

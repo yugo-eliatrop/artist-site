@@ -18,15 +18,18 @@ const Form = props => {
         alert("ERROR: " + JSON.stringify(data.errors));
       }));
   };
-  
+
   return (
     <Wrapper>
       <div className="row" styleName="point">
+        <div className="col-12">
+          <h3 styleName="point-title">Edit Album</h3>
+        </div>
         <div className="col-md-6">
           <p>Album Name</p>
-          <input type="text" defaultValue={album ? album.name : ""} />
+          <input type="text" defaultValue={album.name} />
           <p>Album Description</p>
-          <textarea type="text" defaultValue={album ? album.description : ""} />
+          <textarea type="text" defaultValue={album.description} />
         </div>
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
@@ -35,6 +38,18 @@ const Form = props => {
             <button type="submit">Submit</button>
           </form>
         </div>
+      </div>
+      <div className="row" styleName="point">
+        <div className="col-12">
+          <h3 styleName="point-title">Images Priority</h3>
+        </div>
+        {
+          album.images.map(image =>
+            <div key={image.id} className="col-6 col-sm-4 col-md-3">
+              <img src={image.file.thumb.url} alt="mini-image"/>
+            </div>
+          )
+        }
       </div>
     </Wrapper>
   );

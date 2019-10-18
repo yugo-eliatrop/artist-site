@@ -7,10 +7,9 @@ class Album < ApplicationRecord
   has_many :images, dependent: :destroy
 
   def as_json(*)
-    super(
-      only: %i[id name description priority],
-      include: :images
-    )
+    super(only: %i[id name description priority]).tap do |hash|
+      hash['images'] = images.order(:priority)
+    end
   end
 
   def update_priority(next_alb = nil)
