@@ -1,12 +1,11 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import CSSModules from "react-css-modules";
 
 import TextSettings from "./text/Text";
 import ContactsSettings from "./contacts/Contacts";
 import AlbumList from "./album/List";
+import Wrapper from "./Wrapper";
 import Routes from "../../../libs/routes";
-import styles from "./Main.module.scss";
 
 const Main = props => {
   const { texts, contacts, csrf_token, albums } = props;
@@ -22,18 +21,11 @@ const Main = props => {
   };
 
   return (
-    <div styleName="wrapper">
-      <div className="container">
-        <div className="row" styleName="header">
-          <div className="col-12">
-            <h2>Admin settings</h2>
-          </div>
-        </div>
-        <TextSettings texts={texts} handleSubmit={handleSubmit} />
-        <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
-        <AlbumList albums={albums} csrf_token={csrf_token} />
-      </div>
-    </div>
+    <Wrapper>
+      <TextSettings texts={texts} handleSubmit={handleSubmit} />
+      <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
+      <AlbumList albums={albums} csrf_token={csrf_token} />
+    </Wrapper>
   );
 };
 
@@ -41,4 +33,4 @@ const Main = props => {
 
 // };
 
-export default CSSModules(Main, styles, { allowMultiple: true });
+export default Main;
