@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_183749) do
+ActiveRecord::Schema.define(version: 2019_10_18_170231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2019_10_03_183749) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service"], name: "index_contacts_on_service", unique: true
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "file"
+    t.integer "priority"
+    t.bigint "album_id"
+    t.index ["album_id"], name: "index_images_on_album_id"
   end
 
   create_table "texts", force: :cascade do |t|

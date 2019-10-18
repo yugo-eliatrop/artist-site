@@ -4,6 +4,15 @@ class Album < ApplicationRecord
 
   before_create :initialize_priority
 
+  has_many :images, dependent: :destroy
+
+  def as_json(*)
+    super(
+      only: %i[id name description priority],
+      include: :images
+    )
+  end
+
   def update_priority(next_alb = nil)
     return if eql?(next_alb)
 

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :albums do
     post :change_priority, on: :collection
   end
+
+  resources :images, only: :create
   
   get '/admin' => 'admin#index'
   post '/admin_update' => 'admin#update'
