@@ -4,6 +4,7 @@ import CSSModules from "react-css-modules";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import Routes from "../../../../libs/routes";
+import NewForm from "./NewForm";
 import styles from "./List.module.scss";
 
 const List = props => {
@@ -20,6 +21,7 @@ const List = props => {
   const [priorityIsBeingEdited, setPriorityChangingStatus] = useState(false);
   const [priority, setPriority] = useState(props.albums.map(album => album.id));
   const [tempPriority, setTempPriority] = useState(null);
+  const [showNewForm, setNewFormDisplay] = useState(false);
 
   const changePriority = () => {
     let data = new FormData();
@@ -61,50 +63,51 @@ const List = props => {
   };
 
   return (
-    <div styleName="albums point" className="row">
-      <div className="col-12">
-        <h3 styleName="point-title">Albums settings</h3>
-      </div>
-      <div styleName="btns">
-        <div styleName="priority-btns">
-          {
-            priorityIsBeingEdited ?
-              <>
-                <button onClick={changePriority}>Save</button>
-                <button onClick={cancelPriorityChanging}>Cancel</button>
-              </>
-              :
-              <button onClick={startPriorityChanging}>Change priority</button>
-          }
+    <>
+      {showNewForm && <NewForm csrf_token={csrf_token} close={() => setNewFormDisplay(false)} />}
+      <div styleName="albums point" className="row">
+        <div className="col-12">
+          <h3 styleName="point-title">Albums settings</h3>
         </div>
-        <a href={Routes.new_album_path()}>
-          <button>Create Album</button>
-        </a>
-      </div>
-      {
-        priority.map((id, i) =>
-          <div key={albums[id].name} className="col-12" styleName="album">
-            <div styleName="panel">
-              <div styleName="left-side">
-                {
-                  priorityIsBeingEdited &&
-                  <div styleName="arrows">
-                    <button onClick={() => up(id)} disabled={i === 0}>
-                      <FaChevronUp />
-                    </button>
-                    <button onClick={() => down(id)} disabled={i === albums.count - 1}>
-                      <FaChevronDown />
-                    </button>
-                  </div>
-                }
-                <strong>{albums[id].name}</strong>
-              </div>
-              <a href={Routes.edit_album_path(id)}>Edit</a>
-            </div>
+        <div styleName="btns">
+          <div styleName="priority-btns">
+            {
+              priorityIsBeingEdited ?
+                <>
+                  <button onClick={changePriority}>Save</button>
+                  <button onClick={cancelPriorityChanging}>Cancel</button>
+                </>
+                :
+                <button onClick={startPriorityChanging}>Change priority</button>
+            }
           </div>
-        )
-      }
-    </div>
+          <button onClick={() => setNewFormDisplay(true)}>Create Album</button>
+        </div>
+        {
+          priority.map((id, i) =>
+            <div key={albums[id].name} className="col-12" styleName="album">
+              <div styleName="panel">
+                <div styleName="left-side">
+                  {
+                    priorityIsBeingEdited &&
+                    <div styleName="arrows">
+                      <button onClick={() => up(id)} disabled={i === 0}>
+                        <FaChevronUp />
+                      </button>
+                      <button onClick={() => down(id)} disabled={i === albums.count - 1}>
+                        <FaChevronDown />
+                      </button>
+                    </div>
+                  }
+                  <strong>{albums[id].name}</strong>
+                </div>
+                <a href={Routes.edit_album_path(id)}>Edit</a>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </>
   );
 };
 

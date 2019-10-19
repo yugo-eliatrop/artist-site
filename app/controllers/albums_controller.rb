@@ -1,5 +1,14 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: %i[edit change_priority]
+  before_action :authenticate_user!, only: %i[create edit change_priority]
+
+  def create
+    album = Album.new album_params
+    if album.save
+      render json: { id: album.id }, status: :ok
+    else
+      render json: album.errors, status: :unprocessable_entity
+    end
+  end
 
   def edit
     render component: 'pages/admin/album/Form', props: {
@@ -13,5 +22,11 @@ class AlbumsController < ApplicationController
       Album.find(id).update priority: i
     end
     head :ok
+  end
+
+  private
+
+  def album_params
+    params.permit(:id, :name, :description)
   end
 end
