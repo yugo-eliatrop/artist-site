@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 // import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
-
 import Routes from "../../../../libs/routes";
+
 import Wrapper from "../Wrapper";
+import ImageList from "./ImageList";
 import styles from "./Form.module.scss";
 
 const Form = props => {
-  const { album, csrf_token } = props;
+  const { csrf_token } = props;
+
+  const [album, setAlbum] = useState(props.album);
+  const [errors, setErrors] = useState(null);
+  const filesField = useRef(null);
 
   const handleSubmit = event => {
     event.preventDefault();
-    let data = new FormData(event.target);
-    data.append("authenticity_token", csrf_token);
-    fetch(Routes.images_path(), { method: "POST", body: data })
-      .then(response => response.ok || response.json().then(data => {
-        alert("ERROR: " + JSON.stringify(data.errors));
+    let body = new FormData(event.target);
+    body.append("authenticity_token", csrf_token);
+    fetch(Routes.images_path(), { method: "POST", body })
+      .then(response => response.json().then(data => {
+        setAlbum(data.album);
+        filesField.current.value = null;
+        data.errors && setErrors(data.errors);
       }));
   };
 
@@ -33,24 +40,14 @@ const Form = props => {
         </div>
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
-            <input name="file" type="file" />
+            <input name="files[]" type="file" multiple ref={filesField} />
             <input name="album_id" value={album.id} hidden readOnly />
             <button type="submit">Submit</button>
           </form>
+          {errors && <p>Some files were not uploaded</p>}
         </div>
       </div>
-      <div className="row" styleName="point">
-        <div className="col-12">
-          <h3 styleName="point-title">Images Priority</h3>
-        </div>
-        {
-          album.images.map(image =>
-            <div key={image.id} className="col-6 col-sm-4 col-md-3">
-              <img src={image.file.thumb.url} alt="mini-image"/>
-            </div>
-          )
-        }
-      </div>
+      <ImageList album={album} csrf_token={csrf_token} />
     </Wrapper>
   );
 };

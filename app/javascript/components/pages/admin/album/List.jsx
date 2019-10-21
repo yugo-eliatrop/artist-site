@@ -4,11 +4,22 @@ import CSSModules from "react-css-modules";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import Routes from "../../../../libs/routes";
+import usePriority from "../../../shared/usePriority";
 import NewForm from "./NewForm";
 import styles from "./List.module.scss";
 
 const List = props => {
   const { csrf_token } = props;
+
+  const [
+    priority,
+    priorityIsBeingEdited,
+    startPriorityChanging,
+    cancelPriorityChanging,
+    up,
+    down,
+    changePriority
+  ] = usePriority(Routes.change_priority_albums_path(), csrf_token, props.albums);
 
   const convertAlbums = useCallback(() => {
     let obj = {};
@@ -18,49 +29,7 @@ const List = props => {
   }, [props.albums]);
 
   const albums = convertAlbums();
-  const [priorityIsBeingEdited, setPriorityChangingStatus] = useState(false);
-  const [priority, setPriority] = useState(props.albums.map(album => album.id));
-  const [tempPriority, setTempPriority] = useState(null);
   const [showNewForm, setNewFormDisplay] = useState(false);
-
-  const changePriority = () => {
-    let data = new FormData();
-    data.append("authenticity_token", csrf_token);
-    priority.forEach(p => data.append("priority[]", p));
-    fetch(Routes.change_priority_albums_path(), { method: "POST", body: data })
-      .then(response => response.ok && setPriorityChangingStatus(false));
-  };
-
-  const startPriorityChanging = () => {
-    setTempPriority(priority);
-    setPriorityChangingStatus(true);
-  };
-
-  const cancelPriorityChanging = () => {
-    setPriority(tempPriority);
-    setPriorityChangingStatus(false);
-  };
-
-  const swap = (i, j) => {
-    let newPriority = [...priority];
-    newPriority[i] = priority[j];
-    newPriority[j] = priority[i];
-    setPriority(newPriority);
-  };
-
-  const up = id => {
-    const index = priority.findIndex(p => p === id);
-    if (index === 0)
-      return;
-    swap(index - 1, index);
-  };
-
-  const down = id => {
-    const index = priority.findIndex(p => p === id);
-    if (index === priority.length - 1)
-      return;
-    swap(index, index + 1);
-  };
 
   return (
     <>

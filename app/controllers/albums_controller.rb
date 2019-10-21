@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
     render component: 'pages/admin/album/Form', props: {
       csrf_token: form_authenticity_token,
       album: Album.find(params[:id])
-    }
+    }, prerender: false
   end
 
   def change_priority
