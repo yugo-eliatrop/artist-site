@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!, only: %i[create edit change_priority]
+  before_action :set_album, only: :update
 
   def create
     album = Album.new album_params
@@ -17,6 +18,14 @@ class AlbumsController < ApplicationController
     }, prerender: false
   end
 
+  def update
+    if @album.update album_params
+      head :ok
+    else
+      render json: @album.errors, status: :unprocessable_entity
+    end
+  end
+
   def change_priority
     params[:priority].each_with_index do |id, i|
       Album.find(id).update priority: i
@@ -25,6 +34,10 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+  def set_album
+    @album = Album.find(params[:id])
+  end
 
   def album_params
     params.permit(:id, :name, :description)

@@ -50,7 +50,7 @@ const List = props => {
                 <button onClick={startPriorityChanging}>Change priority</button>
             }
           </div>
-          <button onClick={() => setNewFormDisplay(true)}>Create Album</button>
+          {priorityIsBeingEdited || <button onClick={() => setNewFormDisplay(true)}>Create Album</button>}
         </div>
         {
           priority.map((id, i) =>
