@@ -12,7 +12,12 @@ class Image < ApplicationRecord
   def define_priority
     return if priority.present?
 
-    self.priority = Album.find(album_id).images
-                         .order(:priority).last.priority + 1
+    images = Album.find(album_id).images.order(:priority)
+    self.priority =
+      if images.size.zero?
+        0
+      else
+        images.pluck(:priority).max + 1
+      end
   end
 end
