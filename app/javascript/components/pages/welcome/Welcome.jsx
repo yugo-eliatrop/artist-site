@@ -9,15 +9,15 @@ import Footer from "../../shared/footer/Footer";
 import styles from "./Welcome.module.scss";
 
 const Welcome = props => {
-  const { main_text: { title, content } } = props;
+  const { main_text: { title, content }, user, albums, contacts, slides, life_time } = props;
 
   const [menuIsVisible, toggleMenu] = useState(false);
 
   return (
     <div>
       <FirstScreen
-        slides={props.slides}
-        lifeTime={props.life_time}
+        slides={slides}
+        lifeTime={life_time}
         openMenu={() => toggleMenu(true)}
       />
       {
@@ -35,9 +35,9 @@ const Welcome = props => {
           </div>
         </div>
         <hr />
-        <AlbumOverview even albums={props.albums} />
+        <AlbumOverview even albums={albums} />
       </div>
-      <Footer contacts={props.contacts} />
+      <Footer contacts={contacts} user={user} />
     </div>
   );
 };
@@ -49,7 +49,8 @@ Welcome.propTypes = {
   main_text: PropTypes.shape({
     title: PropTypes.string,
     content: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  user: PropTypes.object
 };
 
 export default CSSModules(Welcome, styles, { allowMultiple: true });

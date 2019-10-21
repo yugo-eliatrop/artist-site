@@ -16,6 +16,7 @@ cd artist-site
 bundle install
 yarn install
 rake db:setup
+rails generate routes
 ```
 ## Start app
 

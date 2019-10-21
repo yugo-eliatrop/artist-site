@@ -1,0 +1,16 @@
+@import "../Wrapper.module.scss";
+
+.contacts {
+
+  .contact-field {
+    border-bottom: 1px solid gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    input {
+      border-bottom: none;
+      border-top: none;
+    }
+  }
+}
+  

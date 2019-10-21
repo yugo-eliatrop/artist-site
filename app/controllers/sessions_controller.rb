@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       head :ok
     else
       render json: { errors: { email: ['Wrong email / password'] } },
-             status: 401
+             status: :unauthorized
     end
   end
 

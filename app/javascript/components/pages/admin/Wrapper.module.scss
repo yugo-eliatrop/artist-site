@@ -8,17 +8,6 @@
     color: white;
   }
 
-  .texts {
-    
-    p {
-      margin-bottom: 0;
-    }
-
-    input, textarea {
-      width: 100%;
-    }
-  }
-
   .contacts {
 
     .contact-field {
@@ -32,20 +21,29 @@
       }
     }
   }
+}
 
-  .point {
-    background: $light-blue;
-    margin: 20px 0;
-    border-bottom: 1px solid $sky;
-    border-top: 1px solid $sky;
-    padding: 20px 0;
+.point {
+  background: $light-blue;
+  margin: 20px 0;
+  border-bottom: 1px solid $sky;
+  border-top: 1px solid $sky;
+  padding: 20px 0;
 
-    &-title {
-      font-weight: bold;
-    }
-    
-    input {
-      padding: 0 2px;
-    }
+  &-title {
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 0 2px;
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 }

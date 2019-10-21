@@ -1,0 +1,48 @@
+@import "../Wrapper.module.scss";
+
+.albums {
+
+  .album {
+    display: flex;
+    justify-content: space-between;
+    
+    .panel {
+      border-bottom: 1px solid gray;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 30px;
+      width: 100%;
+
+      .left-side {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .arrows {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-right: 10px;
+    }
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    width: 100%;
+
+    .priority-btns {
+      display: flex;
+  
+      button {
+        
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
