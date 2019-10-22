@@ -21,7 +21,7 @@ const FirstScreen = props => {
 
 FirstScreen.propTypes = {
   lifeTime: PropTypes.number,
-  slides: PropTypes.objectOf(PropTypes.string),
+  slides: PropTypes.arrayOf(PropTypes.string),
   openMenu: PropTypes.func.isRequired
 };
 

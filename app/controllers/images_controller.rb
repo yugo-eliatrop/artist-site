@@ -26,9 +26,16 @@ class ImagesController < ApplicationController
     head :ok
   end
 
+  def destroy_several
+    image_params[:ids].each do |id|
+      Image.find(id).destroy
+    end
+    head :ok
+  end
+
   private
 
   def image_params
-    params.permit(:album_id, files: [])
+    params.permit(:album_id, files: [], ids: [])
   end
 end

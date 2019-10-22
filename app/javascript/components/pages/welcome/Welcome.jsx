@@ -20,9 +20,7 @@ const Welcome = props => {
         lifeTime={life_time}
         openMenu={() => toggleMenu(true)}
       />
-      {
-        menuIsVisible && <MainMenu {...props} close={() => toggleMenu(false)} />
-      }
+      {menuIsVisible && <MainMenu {...props} close={() => toggleMenu(false)} />}
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -44,7 +42,7 @@ const Welcome = props => {
 
 Welcome.propTypes = {
   albums: PropTypes.arrayOf(PropTypes.object),
-  slides: PropTypes.objectOf(PropTypes.string),
+  slides: PropTypes.arrayOf(PropTypes.string),
   life_time: PropTypes.number,
   main_text: PropTypes.shape({
     title: PropTypes.string,

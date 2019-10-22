@@ -6,8 +6,10 @@ class Album < ApplicationRecord
 
   has_many :images, dependent: :destroy
 
+  scope :visible, -> { where visible: true }
+
   def as_json(*)
-    super(only: %i[id name description priority]).tap do |hash|
+    super(except: %i[created_at updated_at]).tap do |hash|
       hash['images'] = images.order(:priority)
     end
   end
@@ -29,6 +31,16 @@ class Album < ApplicationRecord
       list.each_with_index do |e, i|
         e.update! priority: index + i
       end
+    end
+  end
+
+  class << self
+    def slider
+      Album.find_by(slider: true)
+    end
+
+    def slides
+      slider.images.map { |img| img.file.url }
     end
   end
 

@@ -47,7 +47,7 @@ const Slider = props => {
 };
 
 Slider.propTypes = {
-  slides: PropTypes.objectOf(PropTypes.string),
+  slides: PropTypes.arrayOf(PropTypes.string),
   lifeTime: PropTypes.number
 };
 

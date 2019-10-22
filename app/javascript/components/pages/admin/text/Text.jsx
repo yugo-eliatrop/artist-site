@@ -18,13 +18,13 @@ const Text = props => {
             <form onSubmit={handleSubmit}>
               <h4>{text.key}</h4>
               <p>Title:</p>
-              <input name="title" type="text" defaultValue={text.title} />
+              <input name="title" styleName="input" className="form-control" type="text" defaultValue={text.title} />
               <p>Text:</p>
-              <textarea name="content" defaultValue={text.content} />
+              <textarea name="content" className="form-control" defaultValue={text.content} />
               <input name="key" hidden type="text" readOnly value={text.key} />
               <input name="type" hidden type="text" readOnly value="text" />
               <input name="id" hidden type="number" readOnly value={text.id} />
-              <button type="submit">Update</button>
+              <button type="submit" styleName="button" className="btn btn-primary">Update</button>
             </form>
           </div>
         )

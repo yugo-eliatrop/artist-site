@@ -38,8 +38,8 @@ const NewForm = props => {
           <p>Description</p>
           <textarea name="description" type="text" />
           <div styleName="btns">
-            <button type="submit">Create</button>
-            <button onClick={close} type="button">Cancel</button>
+            <button className="btn btn-primary" type="submit">Create</button>
+            <button className="btn btn-secondary" onClick={close} type="button">Cancel</button>
           </div>
         </form>
       </div>

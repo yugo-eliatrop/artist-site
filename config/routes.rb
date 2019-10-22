@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :images, only: :create do
     post :change_priority, on: :collection
+    post :destroy_several, on: :collection
   end
   
   get '/admin' => 'admin#index'

@@ -9,12 +9,12 @@
   img {
     margin-bottom: 10px;
   }
+}
 
-  .btns {
-    display: flex;
-    margin-bottom: 10px;
-    padding: 15px 0;
-  }
+.btns {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 15px 0;
 }
 
 .priority-btn {
@@ -33,4 +33,33 @@
   button {
     margin-top: 7px;
   }
+}
+
+.btns-imgs {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  margin-top: -10px;
+}
+
+.delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.delete-confirm {
+
+  button {
+    margin-right: 10px;
+  }
+}
+
+.img-remove-btn {
+  position: absolute;
+  top: -5px;
+  right: 32px;
+  font-size: 20px;
+  padding: 3px 9px 5px;
 }

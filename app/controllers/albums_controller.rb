@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!, only: %i[create edit change_priority]
-  before_action :set_album, only: :update
+  before_action :set_album, only: %i[update destroy]
 
   def create
     album = Album.new album_params
@@ -19,11 +19,17 @@ class AlbumsController < ApplicationController
   end
 
   def update
+    reset_slider if album_params[:slider]
     if @album.update album_params
       head :ok
     else
       render json: @album.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @album.destroy
+    head :ok
   end
 
   def change_priority
@@ -35,11 +41,15 @@ class AlbumsController < ApplicationController
 
   private
 
+  def reset_slider
+    Album.slider.update slider: false
+  end
+
   def set_album
     @album = Album.find(params[:id])
   end
 
   def album_params
-    params.permit(:id, :name, :description)
+    params.permit(:id, :name, :description, :visible, :slider)
   end
 end
