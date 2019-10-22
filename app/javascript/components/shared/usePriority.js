@@ -25,7 +25,7 @@ const usePriority = (route, csrf_token, list) => {
   };
 
   const cancelPriorityChanging = () => {
-    setPriority(tempPriority);
+    tempPriority && setPriority(tempPriority);
     setPriorityChangingStatus(false);
   };
 
