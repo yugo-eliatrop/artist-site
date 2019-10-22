@@ -5,7 +5,13 @@ import Routes from "../../../libs/routes";
 
 import styles from "./AlbumPreview.module.scss";
 
-const AlbumPreview = ({ album: { id, name, description, preview_img: prevImg } }) => {
+const AlbumPreview = ({ album: { id, name, description, images } }) => {
+  
+  const prevImg = (() => {
+    if (!images || !images[0])
+      return null;
+    return images[0].file.url;
+  })();
 
   const changeImgSize = () => {
     const imgs = document.getElementsByClassName("prev-img");

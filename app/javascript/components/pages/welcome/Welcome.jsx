@@ -20,9 +20,7 @@ const Welcome = props => {
         lifeTime={life_time}
         openMenu={() => toggleMenu(true)}
       />
-      {
-        menuIsVisible && <MainMenu {...props} close={() => toggleMenu(false)} />
-      }
+      {menuIsVisible && <MainMenu {...props} close={() => toggleMenu(false)} />}
       <div className="container">
         <div className="row">
           <div className="col-12">
