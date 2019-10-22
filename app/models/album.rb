@@ -34,8 +34,14 @@ class Album < ApplicationRecord
     end
   end
 
-  def self.slider
-    Album.find_by(slider: true).images.map { |img| img.file.url }
+  class << self
+    def slider
+      Album.find_by(slider: true)
+    end
+
+    def slides
+      slider.images.map { |img| img.file.url }
+    end
   end
 
   private

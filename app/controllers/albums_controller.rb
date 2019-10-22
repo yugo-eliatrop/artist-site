@@ -19,6 +19,7 @@ class AlbumsController < ApplicationController
   end
 
   def update
+    reset_slider if album_params[:slider]
     if @album.update album_params
       head :ok
     else
@@ -39,6 +40,10 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+  def reset_slider
+    Album.slider.update slider: false
+  end
 
   def set_album
     @album = Album.find(params[:id])

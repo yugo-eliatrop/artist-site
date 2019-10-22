@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
       albums: Album.limit(4).order(:priority),
       contacts: Contact.of_all(%w[instagram phone email]),
       main_text: Text.find_by(key: 'Main about'),
-      slides: Album.slider,
+      slides: Album.slides,
       user: current_user
     }
   end
