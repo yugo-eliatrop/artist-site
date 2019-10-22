@@ -80,7 +80,7 @@ const Form = props => {
           }
         </div>
       </div>
-      <ImageList album={album} csrf_token={csrf_token} />
+      {album.images && album.images[0] && <ImageList album={album} csrf_token={csrf_token} />}
       <div className="col-12" styleName="delete">
         <a href={Routes.admin_path()}>Back to admin dashboard</a>
         <button className="btn btn-danger" onClick={() => setDeleting(true)}>Delete Album</button>

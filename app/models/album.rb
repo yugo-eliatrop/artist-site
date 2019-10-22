@@ -34,6 +34,10 @@ class Album < ApplicationRecord
     end
   end
 
+  def self.slider
+    Album.find_by(slider: true).images.map { |img| img.file.url }
+  end
+
   private
 
   def initialize_priority

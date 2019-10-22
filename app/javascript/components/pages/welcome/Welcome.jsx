@@ -44,7 +44,7 @@ const Welcome = props => {
 
 Welcome.propTypes = {
   albums: PropTypes.arrayOf(PropTypes.object),
-  slides: PropTypes.objectOf(PropTypes.string),
+  slides: PropTypes.arrayOf(PropTypes.string),
   life_time: PropTypes.number,
   main_text: PropTypes.shape({
     title: PropTypes.string,
