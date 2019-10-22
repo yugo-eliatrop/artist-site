@@ -36,10 +36,10 @@ const ImageList = props => {
         {
           priorityIsBeingEdited ?
             <>
-              <button styleName="priority-btn" onClick={changePriority}>Save</button>
-              <button styleName="priority-btn" onClick={cancelPriorityChanging}>Cancel</button>
+              <button className="btn btn-primary" styleName="priority-btn" onClick={changePriority}>Save</button>
+              <button className="btn btn-secondary" styleName="priority-btn" onClick={cancelPriorityChanging}>Cancel</button>
             </> :
-            <button styleName="priority-btn" onClick={startPriorityChanging}>Change priority</button>
+            <button className="btn btn-primary" styleName="priority-btn" onClick={startPriorityChanging}>Change priority</button>
         }
       </div>
       {
@@ -48,7 +48,7 @@ const ImageList = props => {
             <img src={images[id].file.thumb.url} alt="mini-image" />
             {
               priorityIsBeingEdited &&
-              <div styleName="btns">
+              <div styleName="btns-imgs">
                 <button onClick={() => up(id)} disabled={index === 0}>
                   <FaChevronLeft />
                 </button>

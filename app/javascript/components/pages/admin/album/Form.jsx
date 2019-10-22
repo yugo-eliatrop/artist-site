@@ -13,6 +13,7 @@ const Form = props => {
   const [album, setAlbum] = useState(props.album);
   const [errors, setErrors] = useState(null);
   const [imgIsLoading, setImgLoadingStatus] = useState(false);
+  const [isDeleting, setDeleting] = useState(false);
   const filesField = useRef(null);
 
   const uploadFiles = event => {
@@ -49,10 +50,10 @@ const Form = props => {
         <div className="col-md-6">
           <form onSubmit={updateAlbum}>
             <p>Album Name</p>
-            <input type="text" name="name" defaultValue={album.name} required minLength="3" />
+            <input type="text" name="name" className="form-control" defaultValue={album.name} required minLength="3" />
             <p>Album Description</p>
-            <textarea type="text" name="description" defaultValue={album.description} />
-            <button type="submit">Submit</button>
+            <textarea type="text" name="description" className="form-control" defaultValue={album.description} />
+            <button className="btn btn-primary" type="submit">Submit</button>
           </form>
         </div>
         <div className="col-md-6">
@@ -65,7 +66,7 @@ const Form = props => {
                 <form styleName="file-uploader" onSubmit={uploadFiles}>
                   <input name="files[]" type="file" styleName="file-input" multiple ref={filesField} />
                   <input name="album_id" value={album.id} hidden readOnly />
-                  <button type="submit">Upload</button>
+                  <button className="btn btn-primary" type="submit">Upload</button>
                 </form>
                 {errors && <p>Some files were not uploaded</p>}
               </>
@@ -73,7 +74,20 @@ const Form = props => {
         </div>
       </div>
       <ImageList album={album} csrf_token={csrf_token} />
-      <a href={Routes.admin_path()}>Back to admin dashboard</a>
+      <div className="col-12" styleName="delete">
+        <a href={Routes.admin_path()}>Back to admin dashboard</a>
+        <button className="btn btn-danger" onClick={() => setDeleting(true)}>Delete Album</button>
+      </div>
+      {
+        isDeleting &&
+        <div className="col-12 alert alert-danger" styleName="delete-confirm">
+          <p>Are you sure about album deleting?</p>
+          <div styleName="btns">
+            <button className="btn btn-danger">Yes, delete album</button>
+            <button className="btn btn-secondary" onClick={() => setDeleting(false)}>Cancel</button>
+          </div>
+        </div>
+      }
     </Wrapper>
   );
 };

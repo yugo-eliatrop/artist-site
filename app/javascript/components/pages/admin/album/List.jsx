@@ -43,14 +43,14 @@ const List = props => {
             {
               priorityIsBeingEdited ?
                 <>
-                  <button onClick={changePriority}>Save</button>
-                  <button onClick={cancelPriorityChanging}>Cancel</button>
+                  <button className="btn btn-primary" onClick={changePriority}>Save</button>
+                  <button className="btn btn-secondary" onClick={cancelPriorityChanging}>Cancel</button>
                 </>
                 :
-                <button onClick={startPriorityChanging}>Change priority</button>
+                <button className="btn btn-primary" onClick={startPriorityChanging}>Change priority</button>
             }
           </div>
-          {priorityIsBeingEdited || <button onClick={() => setNewFormDisplay(true)}>Create Album</button>}
+          {priorityIsBeingEdited || <button className="btn btn-primary" onClick={() => setNewFormDisplay(true)}>Create Album</button>}
         </div>
         {
           priority.map((id, i) =>
