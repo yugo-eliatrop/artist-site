@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!, only: %i[create edit change_priority]
-  before_action :set_album, only: :update
+  before_action :set_album, only: %i[update destroy]
 
   def create
     album = Album.new album_params
@@ -24,6 +24,11 @@ class AlbumsController < ApplicationController
     else
       render json: @album.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @album.destroy
+    head :ok
   end
 
   def change_priority

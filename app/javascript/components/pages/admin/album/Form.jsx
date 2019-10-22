@@ -41,6 +41,13 @@ const Form = props => {
     // TO DO handler
   };
 
+  const destroyAlbum = () => {
+    let body = new FormData();
+    body.append("authenticity_token", csrf_token);
+    fetch(Routes.album_path(album.id), { method: "DELETE", body })
+      .then(response => response.ok && window.location.replace(Routes.admin_path()));
+  };
+
   return (
     <Wrapper>
       <div className="row" styleName="point">
@@ -83,7 +90,7 @@ const Form = props => {
         <div className="col-12 alert alert-danger" styleName="delete-confirm">
           <p>Are you sure about album deleting?</p>
           <div styleName="btns">
-            <button className="btn btn-danger">Yes, delete album</button>
+            <button className="btn btn-danger" onClick={destroyAlbum}>Yes, delete album</button>
             <button className="btn btn-secondary" onClick={() => setDeleting(false)}>Cancel</button>
           </div>
         </div>

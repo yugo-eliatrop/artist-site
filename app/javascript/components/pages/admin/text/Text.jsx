@@ -18,7 +18,7 @@ const Text = props => {
             <form onSubmit={handleSubmit}>
               <h4>{text.key}</h4>
               <p>Title:</p>
-              <input name="title" className="form-control" type="text" defaultValue={text.title} />
+              <input name="title" styleName="input" className="form-control" type="text" defaultValue={text.title} />
               <p>Text:</p>
               <textarea name="content" className="form-control" defaultValue={text.content} />
               <input name="key" hidden type="text" readOnly value={text.key} />
