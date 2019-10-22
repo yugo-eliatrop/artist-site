@@ -24,7 +24,7 @@ const Text = props => {
               <input name="key" hidden type="text" readOnly value={text.key} />
               <input name="type" hidden type="text" readOnly value="text" />
               <input name="id" hidden type="number" readOnly value={text.id} />
-              <button type="submit" className="btn btn-primary">Update</button>
+              <button type="submit" styleName="button" className="btn btn-primary">Update</button>
             </form>
           </div>
         )

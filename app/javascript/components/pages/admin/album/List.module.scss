@@ -9,14 +9,28 @@
     .panel {
       border-bottom: 1px solid gray;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
       height: 30px;
       width: 100%;
 
       .left-side {
         display: flex;
         align-items: center;
+      }
+
+      .last-point {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .middle-point {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+        cursor: pointer;
       }
     }
 

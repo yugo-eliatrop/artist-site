@@ -29,7 +29,7 @@ const Contacts = props => {
               <input name="service" hidden type="text" readOnly value={contact.service} />
               <input name="type" hidden type="text" readOnly value="contact" />
               <input name="id" hidden type="number" readOnly value={contact.id} />
-              <button type="submit">Update</button>
+              <button styleName="button" type="submit">Update</button>
             </form>
           </div>
         )

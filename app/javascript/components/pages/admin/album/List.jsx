@@ -31,6 +31,15 @@ const List = props => {
   const albums = convertAlbums();
   const [showNewForm, setNewFormDisplay] = useState(false);
 
+  const updateAlbum = event => {
+    let body = new FormData();
+    body.append("authenticity_token", csrf_token);
+    body.append("id", event.target.value);
+    body.append(event.target.name, event.target.checked);
+    fetch(Routes.album_path(event.target.value), { method: "PUT", body });
+    // TO DO add handler
+  };
+
   return (
     <>
       {showNewForm && <NewForm csrf_token={csrf_token} close={() => setNewFormDisplay(false)} />}
@@ -52,11 +61,24 @@ const List = props => {
           </div>
           {priorityIsBeingEdited || <button className="btn btn-primary" onClick={() => setNewFormDisplay(true)}>Create Album</button>}
         </div>
+        <div className="col-12" styleName="album">
+          <div styleName="panel">
+            <div className="col-3">
+              <strong>Name</strong>
+            </div>
+            <div className="col-3" styleName="middle-point">
+              <strong>Slider</strong>
+            </div>
+            <div className="col-3" styleName="middle-point">
+              <strong>Visible</strong>
+            </div>
+          </div>
+        </div>
         {
           priority.map((id, i) =>
             <div key={albums[id].name} className="col-12" styleName="album">
               <div styleName="panel">
-                <div styleName="left-side">
+                <div className="col-3" styleName="left-side">
                   {
                     priorityIsBeingEdited &&
                     <div styleName="arrows">
@@ -70,7 +92,29 @@ const List = props => {
                   }
                   <strong>{albums[id].name}</strong>
                 </div>
-                <a href={Routes.edit_album_path(id)}>Edit</a>
+                <div className="col-3" styleName="middle-point">
+                  <input
+                    name="slider"
+                    defaultChecked={albums[id].slider}
+                    type="radio"
+                    value={id}
+                    readOnly
+                    onChange={(event) => updateAlbum(event)}
+                  />
+                </div>
+                <div className="col-3" styleName="middle-point">
+                  <input
+                    name="visible"
+                    defaultChecked={albums[id].visible}
+                    type="checkbox"
+                    value={id}
+                    readOnly
+                    onChange={(event) => updateAlbum(event)}
+                  />
+                </div>
+                <div className="col-3" styleName="last-point">
+                  <a href={Routes.edit_album_path(id)}>Edit</a>
+                </div>
               </div>
             </div>
           )

@@ -18,7 +18,7 @@ const Form = props => {
 
   const uploadFiles = event => {
     event.preventDefault();
-    if (event.target['files[]'].value === "")
+    if (event.target["files[]"].value === "")
       return;
     setImgLoadingStatus(true);
     let body = new FormData(event.target);
@@ -50,10 +50,10 @@ const Form = props => {
         <div className="col-md-6">
           <form onSubmit={updateAlbum}>
             <p>Album Name</p>
-            <input type="text" name="name" className="form-control" defaultValue={album.name} required minLength="3" />
+            <input type="text" name="name" styleName="input" className="form-control" defaultValue={album.name} required minLength="3" />
             <p>Album Description</p>
             <textarea type="text" name="description" className="form-control" defaultValue={album.description} />
-            <button className="btn btn-primary" type="submit">Submit</button>
+            <button styleName="button" className="btn btn-primary" type="submit">Submit</button>
           </form>
         </div>
         <div className="col-md-6">

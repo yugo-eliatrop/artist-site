@@ -40,6 +40,6 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.permit(:id, :name, :description)
+    params.permit(:id, :name, :description, :visible, :slider)
   end
 end

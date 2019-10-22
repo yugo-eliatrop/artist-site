@@ -6,8 +6,10 @@ class Album < ApplicationRecord
 
   has_many :images, dependent: :destroy
 
+  scope :visible, -> { where visible: true }
+
   def as_json(*)
-    super(only: %i[id name description priority]).tap do |hash|
+    super(except: %i[created_at updated_at]).tap do |hash|
       hash['images'] = images.order(:priority)
     end
   end
