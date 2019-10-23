@@ -6,8 +6,10 @@ import styles from "./Albums.module.scss";
 
 const Albums = props => {
   return (
-    <PageWrapper header="Albums">
-      <p>Something</p>
+    <PageWrapper {...props}>
+      <div className="row" styleName="wrapper">
+        <h2>Альбомы</h2>
+      </div>
     </PageWrapper>
   );
 };

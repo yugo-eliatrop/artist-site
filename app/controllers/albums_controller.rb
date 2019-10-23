@@ -4,7 +4,9 @@ class AlbumsController < ApplicationController
 
   def index
     render component: 'pages/album/Albums', props: {
-      albums: Album.visible.order(:priority)
+      albums: Album.visible.order(:priority),
+      contacts: Contact.of_all(%w[instagram phone email]),
+      user: current_user
     }
   end
 

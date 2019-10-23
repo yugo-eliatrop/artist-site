@@ -4,7 +4,7 @@ $modal-bgr: rgba(0, 0, 0, .3);
 $gold: #d2b583;
 $font-biggest: 'Playfair Display SC', serif;
 $font-smallest: 'Cormorant Garamond', serif;
-$footer-gray: #343434;
+$dark-gray: #343434;
 $light-gray: #dddddd;
 $light-blue: #fbfbff;
 $sky: #b3b3da;
@@ -18,7 +18,12 @@ $sky: #b3b3da;
 .button-white {
   background: $light-gray;
   border-radius: 5px;
-  color: $footer-gray;
+  color: $dark-gray;
   font-weight: 900;
   padding: 3px 15px;
+}
+
+.logo-top {
+  color: $gold;
+  font-size: 20px;
 }
