@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 import Routes from "../../../libs/routes";
@@ -6,6 +6,7 @@ import Routes from "../../../libs/routes";
 import styles from "./AlbumPreview.module.scss";
 
 const AlbumPreview = ({ album: { id, name, description, images }, showSub }) => {
+  const [smallWindow, setSmallWindow] = useState(false);
 
   const prevImg = (() => {
     if (!images || !images[0])
@@ -25,6 +26,7 @@ const AlbumPreview = ({ album: { id, name, description, images }, showSub }) => 
   useEffect(() => {
     changeImgSize();
     window.onresize = changeImgSize;
+    document.body.clientWidth < 768 && setSmallWindow(true);
     return () => { window.onresize = null; };
   }, []);
 
@@ -35,9 +37,17 @@ const AlbumPreview = ({ album: { id, name, description, images }, showSub }) => 
         style={{ background: `url(${prevImg || "https://via.placeholder.com/640x480"})` }}
         styleName="prev-img"
         className="prev-img"
-      />
+      >
+        {
+          !showSub &&
+          <div styleName="img-hover">
+            <a href={Routes.album_path(id)}><h3>{name}</h3></a>
+            <a href={Routes.album_path(id)}><p>{description}</p></a>
+          </div>
+        }
+      </div>
       {
-        showSub &&
+        (showSub || smallWindow) &&
         <>
           <a href={Routes.album_path(id)}><h3>{name}</h3></a>
           <a href={Routes.album_path(id)}><p styleName="paragraph">{description}</p></a>
