@@ -5,8 +5,8 @@ import Routes from "../../../libs/routes";
 
 import styles from "./AlbumPreview.module.scss";
 
-const AlbumPreview = ({ album: { id, name, description, images } }) => {
-  
+const AlbumPreview = ({ album: { id, name, description, images }, showSub }) => {
+
   const prevImg = (() => {
     if (!images || !images[0])
       return null;
@@ -36,8 +36,13 @@ const AlbumPreview = ({ album: { id, name, description, images } }) => {
         styleName="prev-img"
         className="prev-img"
       />
-      <a href={Routes.album_path(id)}><h3>{name}</h3></a>
-      <a href={Routes.album_path(id)}><p styleName="paragraph">{description}</p></a>
+      {
+        showSub &&
+        <>
+          <a href={Routes.album_path(id)}><h3>{name}</h3></a>
+          <a href={Routes.album_path(id)}><p styleName="paragraph">{description}</p></a>
+        </>
+      }
     </div>
   );
 };

@@ -1,20 +1,19 @@
-import React, { useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 
 import AlbumPreview from "./AlbumPreview";
 import styles from "./AlbumOverview.module.scss";
 
-const AlbumOverview = ({ albums, even }) => {
-  const wrapper = useRef(null);
+const AlbumOverview = ({ albums, even, showSub }) => {
 
   if (even && albums.length % 2 !== 0)
     albums = albums.slice(0, albums.length - 1);
 
   return (
-    <div ref={wrapper} className="row" styleName="wrapper">
+    <div className="row" styleName="wrapper">
       {
-        albums.map(album => <AlbumPreview key={album.id} album={album} />)
+        albums.map(album => <AlbumPreview key={album.id} album={album} showSub={showSub} />)
       }
     </div>
   );

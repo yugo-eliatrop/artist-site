@@ -2,4 +2,19 @@
 
 .wrapper {
   background: white;
+  padding: 60px 55px 0 55px;
+
+  .header {
+    text-align: center;
+    border-bottom: 1px solid $gold;
+    width: 100%;
+    padding: 10px 0;
+    text-transform: uppercase;
+  }
+}
+
+.overview-wrapper {
+  background: white;
+  padding: 15px 40px 10px 40px;
+  margin: 0 -15px;
 }
