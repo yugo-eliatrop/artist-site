@@ -1,6 +1,12 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create edit change_priority]
+  before_action :authenticate_user!, except: %i[index]
   before_action :set_album, only: %i[update destroy]
+
+  def index
+    render component: 'pages/album/Albums', props: {
+      albums: Album.visible.order(:priority)
+    }
+  end
 
   def create
     album = Album.new album_params
@@ -15,7 +21,7 @@ class AlbumsController < ApplicationController
     render component: 'pages/admin/album/Form', props: {
       csrf_token: form_authenticity_token,
       album: Album.find(params[:id])
-    }, prerender: false
+    }
   end
 
   def update
