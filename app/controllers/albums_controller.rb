@@ -48,7 +48,7 @@ class AlbumsController < ApplicationController
   private
 
   def reset_slider
-    Album.slider.update slider: false
+    Album.slider&.update slider: false
   end
 
   def set_album

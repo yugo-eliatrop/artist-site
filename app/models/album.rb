@@ -40,7 +40,7 @@ class Album < ApplicationRecord
     end
 
     def slides
-      slider.images.map { |img| img.file.url }
+      slider.images.map { |img| img.file.url } if slider.present?
     end
   end
 
