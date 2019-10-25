@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!, except: %i[index]
-  before_action :set_album, only: %i[update destroy]
+  before_action :set_album, only: %i[show update destroy]
 
   def index
     render component: 'pages/album/Albums', props: {
@@ -23,6 +23,14 @@ class AlbumsController < ApplicationController
     render component: 'pages/admin/album/Form', props: {
       csrf_token: form_authenticity_token,
       album: Album.find(params[:id])
+    }
+  end
+
+  def show
+    render component: 'pages/album/Album', props: {
+      album: @album,
+      contacts: Contact.of_all(%w[instagram phone email]),
+      user: current_user
     }
   end
 
