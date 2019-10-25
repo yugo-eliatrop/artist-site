@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     redirect_to '/signin' unless current_user
   end
+
+  def in_system?
+    redirect_to '/' if current_user.present?
+  end
 end

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :signup_open?
+  before_action :in_system?
+
   def new
     render component: 'pages/login/Form', props: {
       user_exists: false,
@@ -21,5 +24,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
+  end
+
+  def signup_open?
+    redirect_to '/signin' unless AdminSettings.signup_open?
   end
 end

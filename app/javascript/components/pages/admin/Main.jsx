@@ -4,11 +4,12 @@ import React from "react";
 import TextSettings from "./text/Text";
 import ContactsSettings from "./contacts/Contacts";
 import AlbumList from "./album/List";
+import ApplicationSettings from "./ApplicationSettings";
 import Wrapper from "./Wrapper";
 import Routes from "../../../libs/routes";
 
 const Main = props => {
-  const { texts, contacts, csrf_token, albums } = props;
+  const { texts, contacts, csrf_token, albums, signup_is_open } = props;
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -22,6 +23,7 @@ const Main = props => {
 
   return (
     <Wrapper>
+      <ApplicationSettings signUpIsOpen={signup_is_open} csrf_token={csrf_token} />
       <TextSettings texts={texts} handleSubmit={handleSubmit} />
       <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
       <AlbumList albums={albums} csrf_token={csrf_token} />

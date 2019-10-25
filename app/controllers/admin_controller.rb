@@ -6,6 +6,7 @@ class AdminController < ApplicationController
       albums: Album.all.order(:priority),
       texts: Text.all.order(:id),
       contacts: Contact.all.order(:id),
+      signup_is_open: AdminSettings.signup_open?,
       csrf_token: form_authenticity_token
     }
   end
@@ -19,6 +20,15 @@ class AdminController < ApplicationController
     else
       head 404
     end
+  end
+
+  def toggle_signup
+    if params[:open].eql?('true')
+      AdminSettings.open_signup
+    else
+      AdminSettings.close_signup
+    end
+    render json: AdminSettings.signup_open?
   end
 
   private
