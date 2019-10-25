@@ -1,0 +1,29 @@
+@import "../variables";
+
+.wrapper {
+  background: $dark-gray;
+  min-height: 100vh;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    color: white;
+    font-size: 20px;
+    font-family: $font-biggest;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+
+    .header {
+      padding: 30px;
+    }
+  }
+}

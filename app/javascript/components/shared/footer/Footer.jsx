@@ -68,7 +68,8 @@ Footer.propTypes = {
     instagram: Contact,
     phone: Contact,
     email: Contact
-  }).isRequired
+  }).isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default CSSModules(Footer, styles, { allowMultiple: true });

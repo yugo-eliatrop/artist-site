@@ -33,7 +33,7 @@ const Welcome = props => {
           </div>
         </div>
         <hr />
-        <AlbumOverview even albums={albums} />
+        <AlbumOverview even showSub albums={albums} />
       </div>
       <Footer contacts={contacts} user={user} />
     </div>

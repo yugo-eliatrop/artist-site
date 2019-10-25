@@ -27,7 +27,7 @@ const MainMenu = props => {
             <div>
               <ul>
                 <li><a href={Routes.root_path()}>Main</a></li>
-                <li><a href={Routes.root_path()}>Albums</a></li>
+                <li><a href={Routes.albums_path()}>Albums</a></li>
                 <li><a href="#">About</a></li>
               </ul>
             </div>

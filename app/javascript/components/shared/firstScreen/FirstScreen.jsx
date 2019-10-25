@@ -10,7 +10,7 @@ const FirstScreen = props => {
   return (
     <div styleName="wrapper">
       <Slider slides={props.slides} lifeTime={props.lifeTime} />
-      <span styleName="menu-item">LOGO</span>
+      <span styleName="menu-item logo-top">LOGO</span>
       <FaBars styleName="menu-item" onClick={props.openMenu} />
       <div styleName="scroll-button">
         <span>explore</span>
