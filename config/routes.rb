@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   get '/admin' => 'admin#index'
   post '/admin_update' => 'admin#update'
+  post '/toggle_signup' => 'admin#toggle_signup'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

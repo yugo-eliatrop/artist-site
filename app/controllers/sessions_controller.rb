@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :in_system?, only: %i[new create]
+
   def new
     render component: 'pages/login/Form', props: {
       user_exists: true,
