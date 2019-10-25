@@ -1,21 +1,19 @@
-require 'singleton'
+module AdminSettings
+  class SignUp
+    @id = Setting.find_by(option: 'allow_signup').id
 
-class AdminSettings
-  include Singleton
+    class << self
+      def open?
+        Setting.find(@id).value
+      end
 
-  @@signup_open = false
+      def open
+        Setting.find(@id).update value: true
+      end
 
-  class << self
-    def signup_open?
-      @@signup_open
-    end
-
-    def open_signup
-      @@signup_open = true
-    end
-
-    def close_signup
-      @@signup_open = false
+      def close
+        Setting.find(@id).update value: false
+      end
     end
   end
 end

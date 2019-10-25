@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  include AdminSettings
   before_action :authenticate_user!
 
   def index
@@ -6,7 +7,7 @@ class AdminController < ApplicationController
       albums: Album.all.order(:priority),
       texts: Text.all.order(:id),
       contacts: Contact.all.order(:id),
-      signup_is_open: AdminSettings.signup_open?,
+      signup_is_open: SignUp.open?,
       csrf_token: form_authenticity_token
     }
   end
@@ -24,11 +25,11 @@ class AdminController < ApplicationController
 
   def toggle_signup
     if params[:open].eql?('true')
-      AdminSettings.open_signup
+      SignUp.open
     else
-      AdminSettings.close_signup
+      SignUp.close
     end
-    render json: AdminSettings.signup_open?
+    render json: SignUp.open?
   end
 
   private
