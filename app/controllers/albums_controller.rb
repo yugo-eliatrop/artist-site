@@ -29,6 +29,7 @@ class AlbumsController < ApplicationController
   def show
     render component: 'pages/album/Album', props: {
       album: @album,
+      albums: Album.visible.order(:priority),
       contacts: Contact.of_all(%w[instagram phone email]),
       user: current_user
     }
