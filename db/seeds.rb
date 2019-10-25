@@ -15,3 +15,6 @@ Contact.create service: 'instagram',
 
 Contact.create service: 'email',
                address: 'example@photo.com'
+
+Setting.create option: 'allow_signup',
+               value: true

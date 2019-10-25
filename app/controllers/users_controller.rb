@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include AdminSettings
   before_action :signup_open?
   before_action :in_system?
 
@@ -27,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def signup_open?
-    redirect_to '/signin' unless AdminSettings.signup_open?
+    redirect_to '/signin' unless SignUp.open?
   end
 end

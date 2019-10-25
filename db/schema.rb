@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_113800) do
+ActiveRecord::Schema.define(version: 2019_10_25_194840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 2019_10_22_113800) do
     t.integer "priority"
     t.bigint "album_id"
     t.index ["album_id"], name: "index_images_on_album_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "option"
+    t.jsonb "value"
+    t.index ["option"], name: "index_settings_on_option", unique: true
   end
 
   create_table "texts", force: :cascade do |t|
