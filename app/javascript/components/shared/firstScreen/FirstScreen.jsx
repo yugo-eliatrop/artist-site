@@ -12,7 +12,7 @@ const FirstScreen = props => {
       <Slider slides={props.slides} lifeTime={props.lifeTime} />
       <span styleName="menu-item logo-top">LOGO</span>
       <FaBars styleName="menu-item" onClick={props.openMenu} />
-      <div styleName="scroll-button">
+      <div styleName="scroll-button" onClick={props.scroll}>
         <span>explore</span>
       </div>
     </div>
