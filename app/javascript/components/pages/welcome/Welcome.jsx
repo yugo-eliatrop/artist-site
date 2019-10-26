@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import CSSModules from "react-css-modules";
 
@@ -6,6 +6,7 @@ import FirstScreen from "../../shared/firstScreen/FirstScreen";
 import MainMenu from "../../shared/menu/MainMenu";
 import AlbumOverview from "../../shared/album/AlbumOverview";
 import Footer from "../../shared/footer/Footer";
+import { scrollToElem } from "../../../libs/animation";
 import styles from "./Welcome.module.scss";
 
 const Welcome = props => {
@@ -13,15 +14,18 @@ const Welcome = props => {
 
   const [menuIsVisible, toggleMenu] = useState(false);
 
+  const aboutBlock = useRef(null);
+
   return (
     <div>
       <FirstScreen
         slides={slides}
         lifeTime={life_time}
         openMenu={() => toggleMenu(true)}
+        scroll={() => scrollToElem(aboutBlock.current, 500)}
       />
       {menuIsVisible && <MainMenu {...props} close={() => toggleMenu(false)} />}
-      <div className="container">
+      <div className="container" ref={aboutBlock}>
         <div className="row">
           <div className="col-12">
             <div styleName="intro">
