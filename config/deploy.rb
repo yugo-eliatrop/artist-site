@@ -56,9 +56,12 @@ task :deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    command %{gem install foreman}
     invoke :'rails:db_migrate'
+    command %{foreman run yarn install}
     command %{rails generate routes}
-    invoke :'rails:assets_precompile'
+    command %{foreman run rails assets:precompile}
+    # invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
     on :launch do
