@@ -31,17 +31,17 @@ task :remote_environment do
   invoke :'rvm:use', 'ruby-2.6.3'
 end
 
-# Put any custom commands you need to run at setup
-# All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
-  # command %{rbenv install 2.3.0 --skip-existing}
   command %(touch "#{fetch(:deploy_to)}/shared/config/master.key")
+  command %(touch "#{fetch(:deploy_to)}/shared/config/database.yml")
+  command %(touch "#{fetch(:deploy_to)}/shared/.env")
 end
 
 namespace :rails do
   desc "Generate app/javascript/libs/routes.js"
   task :generate_routes do
     comment 'Generate app/javascript/libs/routes.js'
+    command %{foreman run yarn install}
     command %{#{fetch(:rails)} generate routes}
   end
 end
