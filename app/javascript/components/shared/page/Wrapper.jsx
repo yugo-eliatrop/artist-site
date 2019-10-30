@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CSSModules from "react-css-modules";
 import { FaBars } from "react-icons/fa";
 
+import Routes from "../../../libs/routes";
 import MainMenu from "../menu/MainMenu";
 import Footer from "../footer/Footer";
 import styles from "./Wrapper.module.scss";
@@ -23,7 +24,7 @@ const Wrapper = ({ children, contacts, user, albums }) => {
         <div className="container">
           <div className="row">
             <div className="col-12" styleName="header">
-              <span styleName="logo-top">LOGO</span>
+              <a href={Routes.root_path()} styleName="logo-top">LOGO</a>
               <FaBars onClick={() => toggleMenu(true)} />
             </div>
           </div>
