@@ -26,4 +26,10 @@ $sky: #b3b3da;
 .logo-top {
   color: $gold;
   font-size: 20px;
+  text-decoration: none;
+
+  &:hover {
+    color: $gold;
+    text-decoration: none;
+  }
 }
