@@ -1,14 +1,9 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-# require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
-require 'mina/rvm'    # for rvm support. (https://rvm.io)
+require 'mina/rvm'
 
 # Basic settings:
-#   domain       - The hostname to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'artist-site'
 set :domain, '116.203.97.72'
@@ -17,25 +12,22 @@ set :repository, 'https://github.com/PapaSergiusV/artist-site.git'
 set :branch, 'master'
 
 # Optional settings:
-  set :user, 'root'          # Username in the server to SSH to.
-  set :port, '22'           # SSH port number.
-  set :forward_agent, true     # SSH forward_agent.
-  set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
+set :user, 'root'
+set :port, '22'
+set :forward_agent, true
+set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 
-# Shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
-# Some plugins already add folders to shared_dirs like `mina/rails` add `public/assets`, `vendor/bundle` and many more
-# run `mina -d` to see all folders and files already included in `shared_dirs` and `shared_files`
-# set :shared_dirs, fetch(:shared_dirs, []).push('public/assets')
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key')
+set :shared_dirs, fetch(:shared_dirs, []).push('public/uploads')
 
-# This task is the environment that is loaded for all remote run commands, such as
-# `mina deploy` or `mina rake`.
+set :shared_files, fetch(:shared_files, []).push(
+  'config/database.yml',
+  'config/master.key',
+  '.env'
+)
+
+# This task is the environment that is loaded for all remote run commands, such
+# as `mina deploy` or `mina rake`.
 task :remote_environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  # invoke :'rbenv:load'
-
-  # For those using RVM, use this to load an RVM version@gemset.
   invoke :'rvm:use', 'ruby-2.6.3'
 end
 
@@ -46,22 +38,24 @@ task :setup do
   command %(touch "#{fetch(:deploy_to)}/shared/config/master.key")
 end
 
+namespace :rails do
+  desc "Generate app/javascript/libs/routes.js"
+  task :generate_routes do
+    comment 'Generate app/javascript/libs/routes.js'
+    command %{#{fetch(:rails)} generate routes}
+  end
+end
+
 desc "Deploys the current version to the server."
 task :deploy do
-  # uncomment this line to make sure you pushed your local branch to the remote origin
-  # invoke :'git:ensure_pushed'
   deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     command %{gem install foreman}
     invoke :'rails:db_migrate'
-    command %{foreman run yarn install}
-    command %{rails generate routes}
+    invoke :'rails:generate_routes'
     command %{foreman run rails assets:precompile}
-    # invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
     on :launch do
@@ -72,7 +66,8 @@ task :deploy do
     end
   end
 
-  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
+  # you can use `run :local` to run tasks on local machine before
+  # of after the deploy scripts
   # run(:local){ say 'done' }
 end
 
