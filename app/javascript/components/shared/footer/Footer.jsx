@@ -69,7 +69,7 @@ Footer.propTypes = {
     phone: Contact,
     email: Contact
   }).isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object
 };
 
 export default CSSModules(Footer, styles, { allowMultiple: true });

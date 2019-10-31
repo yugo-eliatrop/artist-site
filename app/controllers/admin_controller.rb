@@ -8,6 +8,7 @@ class AdminController < ApplicationController
       texts: Text.all.order(:id),
       contacts: Contact.all.order(:id),
       signup_is_open: SignUp.open?,
+      logo: Logo.load,
       csrf_token: form_authenticity_token
     }
   end
@@ -30,6 +31,11 @@ class AdminController < ApplicationController
       SignUp.close
     end
     render json: SignUp.open?
+  end
+
+  def change_logo
+    Logo.update(params[:logo])
+    head :ok
   end
 
   private

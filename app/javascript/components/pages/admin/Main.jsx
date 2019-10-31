@@ -9,7 +9,7 @@ import Wrapper from "./Wrapper";
 import Routes from "../../../libs/routes";
 
 const Main = props => {
-  const { texts, contacts, csrf_token, albums, signup_is_open } = props;
+  const { texts, contacts, csrf_token, albums, signup_is_open, logo } = props;
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -23,7 +23,7 @@ const Main = props => {
 
   return (
     <Wrapper>
-      <ApplicationSettings signUpIsOpen={signup_is_open} csrf_token={csrf_token} />
+      <ApplicationSettings signUpIsOpen={signup_is_open} logo={logo} csrf_token={csrf_token} />
       <TextSettings texts={texts} handleSubmit={handleSubmit} />
       <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
       <AlbumList albums={albums} csrf_token={csrf_token} />

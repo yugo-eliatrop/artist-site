@@ -10,7 +10,7 @@ import { scrollToElem } from "../../../libs/animation";
 import styles from "./Welcome.module.scss";
 
 const Welcome = props => {
-  const { main_text: { title, content }, user, albums, contacts, slides, life_time } = props;
+  const { main_text: { title, content }, user, albums, contacts, slides, life_time, logo } = props;
 
   const [menuIsVisible, toggleMenu] = useState(false);
 
@@ -21,6 +21,7 @@ const Welcome = props => {
       <FirstScreen
         slides={slides}
         lifeTime={life_time}
+        logo={logo}
         openMenu={() => toggleMenu(true)}
         scroll={() => scrollToElem(aboutBlock.current, 500)}
       />
