@@ -40,7 +40,7 @@ const Welcome = props => {
         <hr />
         <AlbumOverview even showSub albums={albums} />
       </div>
-      <Footer contacts={contacts} user={user} />
+      <Footer contacts={contacts} user={user} logo={logo} />
     </div>
   );
 };
