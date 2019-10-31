@@ -6,7 +6,7 @@ import Routes from "../../../libs/routes";
 
 import styles from "./Footer.module.scss";
 
-const Footer = ({ contacts: { instagram, phone, email }, user }) => {
+const Footer = ({ contacts: { instagram, phone, email }, user, logo }) => {
   const signOut = () => {
     fetch(Routes.signout_path())
       .then(response => response.ok && window.location.reload());
@@ -14,7 +14,7 @@ const Footer = ({ contacts: { instagram, phone, email }, user }) => {
 
   return (
     <div styleName="wrapper">
-      <div styleName="gold">LOGO</div>
+      <div styleName="gold">{logo}</div>
       {
         instagram &&
         <div styleName="address-point">

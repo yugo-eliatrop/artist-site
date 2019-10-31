@@ -31,7 +31,7 @@ const Wrapper = ({ children, contacts, user, albums, logo }) => {
           </div>
           {children}
         </div>
-        <Footer contacts={contacts} user={user} />
+        <Footer contacts={contacts} user={user} logo={logo} />
       </div>
     </>
   );

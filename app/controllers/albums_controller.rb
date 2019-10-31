@@ -24,6 +24,7 @@ class AlbumsController < ApplicationController
   def edit
     render component: 'pages/admin/album/Form', props: {
       csrf_token: form_authenticity_token,
+      logo: Logo.load,
       album: Album.find(params[:id])
     }
   end
@@ -33,6 +34,7 @@ class AlbumsController < ApplicationController
       album: @album,
       albums: Album.visible.order(:priority),
       contacts: Contact.of_all(%w[instagram phone email]),
+      logo: Logo.load,
       user: current_user
     }
   end
