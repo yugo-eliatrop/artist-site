@@ -10,7 +10,8 @@ import styles from "./MainMenu.module.scss";
 const MainMenu = props => {
   const { 
     albums = [{ name: "", id: 0 }],
-    contacts: { instagram, phone, email }
+    contacts: { instagram, phone, email },
+    logo
   } = props;
   const [wrapper, close] = usePopupAnimation(props.close);
   return (
@@ -18,7 +19,7 @@ const MainMenu = props => {
       <div className="container">
         <div className="row">
           <div className="col-12" styleName="row">
-            <div styleName="gold">LOGO</div>
+            <div styleName="gold">{logo}</div>
             <div styleName="close-button">
               <FaTimes onClick={close} />
             </div>
@@ -28,7 +29,7 @@ const MainMenu = props => {
               <ul>
                 <li><a href={Routes.root_path()}>Main</a></li>
                 <li><a href={Routes.albums_path()}>Albums</a></li>
-                <li><a href="#">About</a></li>
+                {/* <li><a href="#">About</a></li> */}
               </ul>
             </div>
             <div>

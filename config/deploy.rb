@@ -2,6 +2,7 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
+require 'mina/puma'
 
 # Basic settings:
 
@@ -60,8 +61,8 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        invoke :remote_environment
-        invoke :'puma:hard_restart'
+        # invoke :remote_environment
+        # invoke :'puma:hard_restart'
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
       end

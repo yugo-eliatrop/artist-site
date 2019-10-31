@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  include AdminSettings
   before_action :authenticate_user!, except: %i[index]
   before_action :set_album, only: %i[show update destroy]
 
@@ -6,6 +7,7 @@ class AlbumsController < ApplicationController
     render component: 'pages/album/Albums', props: {
       albums: Album.visible.order(:priority),
       contacts: Contact.of_all(%w[instagram phone email]),
+      logo: Logo.load,
       user: current_user
     }
   end
