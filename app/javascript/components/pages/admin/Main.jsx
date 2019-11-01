@@ -23,10 +23,42 @@ const Main = props => {
 
   return (
     <Wrapper>
-      <ApplicationSettings signUpIsOpen={signup_is_open} logo={logo} csrf_token={csrf_token} />
-      <TextSettings texts={texts} handleSubmit={handleSubmit} />
-      <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
-      <AlbumList albums={albums} csrf_token={csrf_token} />
+      <ul className="nav nav-tabs" id="tab" role="tablist">
+        <li className="nav-item">
+          <a className="nav-link active" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="true">
+            Application
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" id="text-tab" data-toggle="tab" href="#text" role="tab" aria-controls="text" aria-selected="false">
+            Texts
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" id="contacts-tab" data-toggle="tab" href="#contacts" role="tab" aria-controls="contacts" aria-selected="false">
+            Contacts
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" id="albums-tab" data-toggle="tab" href="#albums" role="tab" aria-controls="albums" aria-selected="false">
+            Albums
+          </a>
+        </li>
+      </ul>
+      <div className="tab-content" id="tabContent">
+        <div className="tab-pane fade show active" id="app" role="tabpanel" aria-labelledby="app-tab">
+          <ApplicationSettings signUpIsOpen={signup_is_open} logo={logo} csrf_token={csrf_token} />
+        </div>
+        <div className="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+          <TextSettings texts={texts} handleSubmit={handleSubmit} />
+        </div>
+        <div className="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+          <ContactsSettings contacts={contacts} handleSubmit={handleSubmit} />
+        </div>
+        <div className="tab-pane fade" id="albums" role="tabpanel" aria-labelledby="albums-tab">
+          <AlbumList albums={albums} csrf_token={csrf_token} />
+        </div>
+      </div>
     </Wrapper>
   );
 };

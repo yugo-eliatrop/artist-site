@@ -49,7 +49,7 @@ const Form = props => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper isNested>
       <div className="row" styleName="point">
         <div className="col-12">
           <h3 styleName="point-title">Edit Album</h3>
