@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   include AdminSettings
-  before_action :authenticate_user!, except: %i[index]
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_album, only: %i[show update destroy]
 
   def index
