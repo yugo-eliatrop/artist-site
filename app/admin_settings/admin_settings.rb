@@ -1,6 +1,11 @@
 module AdminSettings
   class SignUp
-    @id = Setting.find_by(option: 'allow_signup').id
+    @id =
+      if Setting.find_by(option: 'allow_signup').present?
+        Setting.find_by(option: 'allow_signup').id
+      else
+        Setting.create!(option: 'allow_signup', value: true).id
+      end
 
     class << self
       def open?
@@ -18,7 +23,12 @@ module AdminSettings
   end
 
   class Logo
-    @id = Setting.find_by(option: 'logo').id
+    @id =
+      if Setting.find_by(option: 'logo').present?
+        Setting.find_by(option: 'logo').id
+      else
+        Setting.create!(option: 'logo', value: 'LOGO').id
+      end
 
     class << self
       def load
