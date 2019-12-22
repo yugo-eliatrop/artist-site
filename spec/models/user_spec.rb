@@ -21,11 +21,12 @@ RSpec.describe User, type: :model do
     end
 
     it 'ensures email unique' do
-      User.create(name: 'test', email: 'ph@ph.com', password: '123123')
+      u = User.create(name: 'test', email: 'ph@ph.com', password: '123123')
       user = User.new(name: 'test', email: 'ph@ph.com', password: '123123')
       expect(user.valid?).to eq(false)
       user.email += '1'
       expect(user.valid?).to eq(true)
+      u.destroy
     end
 
     it 'ensures email valid' do

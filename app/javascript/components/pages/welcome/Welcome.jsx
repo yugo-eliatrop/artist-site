@@ -10,7 +10,13 @@ import { scrollToElem } from "../../../libs/animation";
 import styles from "./Welcome.module.scss";
 
 const Welcome = props => {
-  const { main_text: { title, content }, user, albums, contacts, slides, life_time, logo } = props;
+  const { main_text, user, albums, contacts, slides, life_time, logo } = props;
+
+  const [title, content] = (() => {
+    if (!main_text)
+      return [null, null];
+    return [main_text.title, main_text.content];
+  })();
 
   const [menuIsVisible, toggleMenu] = useState(false);
 
